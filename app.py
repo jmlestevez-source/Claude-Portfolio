@@ -20,18 +20,140 @@ app = Flask(__name__)
 CORS(app)
 
 
-def get_sp500_tickers():
-    """Obtiene los tickers del S&P 500 desde Wikipedia."""
-    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+# Lista hardcodeada de tickers S&P 500 con sectores (actualizada marzo 2026)
+# Esta lista se puede actualizar manualmente cuando cambie la composición del índice
+SP500_TICKERS = [
+    # Communication Services
+    ("AAPL", "Communication Services"), ("GOOGL", "Communication Services"), ("GOOG", "Communication Services"),
+    ("META", "Communication Services"), ("NFLX", "Communication Services"), ("DIS", "Communication Services"),
+    ("CMCSA", "Communication Services"), ("VZ", "Communication Services"), ("T", "Communication Services"),
+    ("TMUS", "Communication Services"), ("CHTR", "Communication Services"), ("ATVI", "Communication Services"),
+    ("EA", "Communication Services"), ("TTWO", "Communication Services"), ("FOX", "Communication Services"),
+    ("FOXA", "Communication Services"), ("CBS", "Communication Services"), ("VIA", "Communication Services"),
+    ("VIAC", "Communication Services"), ("OMC", "Communication Services"), ("IPG", "Communication Services"),
+    # Information Technology
+    ("MSFT", "Information Technology"), ("NVDA", "Information Technology"), ("AVGO", "Information Technology"),
+    ("AMD", "Information Technology"), ("INTC", "Information Technology"), ("CSCO", "Information Technology"),
+    ("QCOM", "Information Technology"), ("TXN", "Information Technology"), ("ADBE", "Information Technology"),
+    ("CRM", "Information Technology"), ("ORCL", "Information Technology"), ("IBM", "Information Technology"),
+    ("INTU", "Information Technology"), ("NOW", "Information Technology"), ("UBER", "Information Technology"),
+    ("PYPL", "Information Technology"), ("ADP", "Information Technology"), ("FIS", "Information Technology"),
+    ("FISV", "Information Technology"), ("GPN", "Information Technology"), ("V", "Information Technology"),
+    ("MA", "Information Technology"), ("ACN", "Information Technology"), ("IT", "Information Technology"),
+    ("CTSH", "Information Technology"), ("INFY", "Information Technology"), ("WDC", "Information Technology"),
+    ("STX", "Information Technology"), ("NTAP", "Information Technology"), ("ANET", "Information Technology"),
+    ("CSCO", "Information Technology"), ("JNPR", "Information Technology"), ("FFIV", "Information Technology"),
+    ("PANW", "Information Technology"), ("SPLK", "Information Technology"), ("ZI", "Information Technology"),
+    ("SNPS", "Information Technology"), ("CDNS", "Information Technology"), ("SWKS", "Information Technology"),
+    ("XLNX", "Information Technology"), ("MCHP", "Information Technology"), ("ON", "Information Technology"),
+    ("NXPI", "Information Technology"), ("MU", "Information Technology"), ("LRCX", "Information Technology"),
+    ("KLAC", "Information Technology"), ("TER", "Information Technology"), ("ENTG", "Information Technology"),
+    ("ADI", "Information Technology"), ("QRVO", "Information Technology"), ("IDXX", "Information Technology"),
+    ("ZTS", "Information Technology"), ("ROP", "Information Technology"), ("TDY", "Information Technology"),
+    ("HUBS", "Information Technology"), ("ZEN", "Information Technology"), ("DOCU", "Information Technology"),
+    ("OKTA", "Information Technology"), ("TEAM", "Information Technology"), ("SAIL", "Information Technology"),
+    ("NET", "Information Technology"), ("DDOG", "Information Technology"), ("ESTC", "Information Technology"),
+    ("CRWD", "Information Technology"), ("ZS", "Information Technology"), ("SNOW", "Information Technology"),
+    ("PLTR", "Information Technology"), ("COUP", "Information Technology"), ("BILL", "Information Technology"),
+    # Health Care
+    ("UNH", "Health Care"), ("JNJ", "Health Care"), ("LLY", "Health Care"), ("PFE", "Health Care"),
+    ("ABBV", "Health Care"), ("MRK", "Health Care"), ("TMO", "Health Care"), ("ABT", "Health Care"),
+    ("DHR", "Health Care"), ("BMY", "Health Care"), ("AMGN", "Health Care"), ("MDT", "Health Care"),
+    ("GILD", "Health Care"), ("CVS", "Health Care"), ("CI", "Health Care"), ("HUM", "Health Care"),
+    ("ELV", "Health Care"), ("CNC", "Health Care"), ("DGX", "Health Care"), ("LH", "Health Care"),
+    ("ISRG", "Health Care"), ("IDXX", "Health Care"), ("ZTS", "Health Care"), ("REGN", "Health Care"),
+    ("VRTX", "Health Care"), ("BIIB", "Health Care"), ("INCY", "Health Care"), ("ILMN", "Health Care"),
+    ("IEX", "Health Care"), ("WAT", "Health Care"), ("TECH", "Health Care"), ("BRK-B", "Health Care"),
+    # Financials
+    ("BRK-A", "Financials"), ("JPM", "Financials"), ("V", "Financials"), ("MA", "Financials"),
+    ("BAC", "Financials"), ("WFC", "Financials"), ("GS", "Financials"), ("MS", "Financials"),
+    ("C", "Financials"), ("BLK", "Financials"), ("SCHW", "Financials"), ("AXP", "Financials"),
+    ("USB", "Financials"), ("PNC", "Financials"), ("TFC", "Financials"), ("COF", "Financials"),
+    ("SPGI", "Financials"), ("ICE", "Financials"), ("CME", "Financials"), ("NDAQ", "Financials"),
+    ("MMC", "Financials"), ("AON", "Financials"), ("WTW", "Financials"), ("AJG", "Financials"),
+    ("BRO", "Financials"), ("PGR", "Financials"), ("TRV", "Financials"), ("ALL", "Financials"),
+    ("CB", "Financials"), ("CINF", "Financials"), ("MET", "Financials"), ("PRU", "Financials"),
+    ("AFL", "Financials"), ("LNC", "Financials"), ("AMP", "Financials"), ("TROW", "Financials"),
+    ("BEN", "Financials"), ("BLK", "Financials"), ("IVZ", "Financials"), ("STT", "Financials"),
+    ("BK", "Financials"), ("NTRS", "Financials"), ("FRC", "Financials"), ("KEY", "Financials"),
+    ("FITB", "Financials"), ("HBAN", "Financials"), ("RF", "Financials"), ("CFG", "Financials"),
+    ("ZION", "Financials"), ("MTB", "Financials"), ("PNFP", "Financials"), ("SIVB", "Financials"),
+    ("SYF", "Financials"), ("CMA", "Financials"),
+    # Consumer Discretionary
+    ("AMZN", "Consumer Discretionary"), ("TSLA", "Consumer Discretionary"), ("HD", "Consumer Discretionary"),
+    ("MCD", "Consumer Discretionary"), ("NKE", "Consumer Discretionary"), ("LOW", "Consumer Discretionary"),
+    ("TJX", "Consumer Discretionary"), ("SBUX", "Consumer Discretionary"), ("BKNG", "Consumer Discretionary"),
+    ("ABNB", "Consumer Discretionary"), ("MAR", "Consumer Discretionary"), ("RCL", "Consumer Discretionary"),
+    ("CCL", "Consumer Discretionary"), ("LVS", "Consumer Discretionary"), ("WYNN", "Consumer Discretionary"),
+    ("MGM", "Consumer Discretionary"), ("HAS", "Consumer Discretionary"), ("MAT", "Consumer Discretionary"),
+    ("GM", "Consumer Discretionary"), ("F", "Consumer Discretionary"), ("RIVN", "Consumer Discretionary"),
+    ("LCID", "Consumer Discretionary"), ("EBAY", "Consumer Discretionary"), ("ETSY", "Consumer Discretionary"),
+    ("BIDU", "Consumer Discretionary"), ("EXPE", "Consumer Discretionary"), ("TRIP", "Consumer Discretionary"),
+    ("YELP", "Consumer Discretionary"), ("GRMN", "Consumer Discretionary"), ("DLTR", "Consumer Discretionary"),
+    ("DG", "Consumer Discretionary"), ("FIVE", "Consumer Discretionary"), ("OLLI", "Consumer Discretionary"),
+    ("ROSS", "Consumer Discretionary"), ("BBY", "Consumer Discretionary"), ("KSS", "Consumer Discretionary"),
+    ("M", "Consumer Discretionary"), ("JWN", "Consumer Discretionary"), ("DDS", "Consumer Discretionary"),
+    # Consumer Staples
+    ("PG", "Consumer Staples"), ("KO", "Consumer Staples"), ("PEP", "Consumer Staples"),
+    ("COST", "Consumer Staples"), ("WMT", "Consumer Staples"), ("PM", "Consumer Staples"),
+    ("MO", "Consumer Staples"), ("MDLZ", "Consumer Staples"), ("CL", "Consumer Staples"),
+    ("KMB", "Consumer Staples"), ("KHC", "Consumer Staples"), ("GIS", "Consumer Staples"),
+    ("CAG", "Consumer Staples"), ("SJM", "Consumer Staples"), ("CPB", "Consumer Staples"),
+    ("HRL", "Consumer Staples"), ("TSN", "Consumer Staples"), ("HRL", "Consumer Staples"),
+    ("WBA", "Consumer Staples"), ("COST", "Consumer Staples"), ("TGT", "Consumer Staples"),
+    ("DG", "Consumer Staples"), ("DLTR", "Consumer Staples"), ("BV", "Consumer Staples"),
+    ("CHD", "Consumer Staples"), ("CLX", "Consumer Staples"), ("COLG", "Consumer Staples"),
+    ("EL", "Consumer Staples"), ("ESTEE", "Consumer Staples"),
+    # Industrials
+    ("GE", "Industrials"), ("CAT", "Industrials"), ("DE", "Industrials"), ("HON", "Industrials"),
+    ("UPS", "Industrials"), ("FDX", "Industrials"), ("BA", "Industrials"), ("RTX", "Industrials"),
+    ("LMT", "Industrials"), ("NOC", "Industrials"), ("GD", "Industrials"), ("TDY", "Industrials"),
+    ("TXT", "Industrials"), ("LHX", "Industrials"), ("HWM", "Industrials"), ("PNR", "Industrials"),
+    ("ETN", "Industrials"), ("EMR", "Industrials"), ("ROK", "Industrials"), ("ABBV", "Industrials"),
+    ("PH", "Industrials"), ("IR", "Industrials"), ("MMM", "Industrials"), ("HII", "Industrials"),
+    ("SWK", "Industrials"), ("BLDR", "Industrials"), ("MAS", "Industrials"), ("FBHS", "Industrials"),
+    ("WSO", "Industrials"), ("GWW", "Industrials"), ("FAST", "Industrials"), ("MSI", "Industrials"),
+    ("XYL", "Industrials"), ("IDEX", "Industrials"), ("IEX", "Industrials"), ("ITW", "Industrials"),
+    ("AME", "Industrials"), ("ROP", "Industrials"), ("CTAS", "Industrials"), ("RE", "Industrials"),
+    ("AON", "Industrials"), ("MMC", "Industrials"), ("WTW", "Industrials"),
+    # Energy
+    ("XOM", "Energy"), ("CVX", "Energy"), ("COP", "Energy"), ("SLB", "Energy"),
+    ("EOG", "Energy"), ("PSX", "Energy"), ("VLO", "Energy"), ("MPC", "Energy"),
+    ("OXY", "Energy"), ("FANG", "Energy"), ("APA", "Energy"), ("DVN", "Energy"),
+    ("MRO", "Energy"), ("HAL", "Energy"), ("NOV", "Energy"), ("WMB", "Energy"),
+    ("KMI", "Energy"), ("OKE", "Energy"), ("EPD", "Energy"), ("ET", "Energy"),
+    ("PBA", "Energy"), ("ENB", "Energy"), ("TRP", "Energy"), ("CNQ", "Energy"),
+    # Utilities
+    ("NEE", "Utilities"), ("DUK", "Utilities"), ("SO", "Utilities"), ("D", "Utilities"),
+    ("EXC", "Utilities"), ("AEP", "Utilities"), ("SRE", "Utilities"), ("XEL", "Utilities"),
+    ("WEC", "Utilities"), ("PEG", "Utilities"), ("ES", "Utilities"), ("ED", "Utilities"),
+    ("EIX", "Utilities"), ("PPL", "Utilities"), ("FE", "Utilities"), ("CMS", "Utilities"),
+    ("AES", "Utilities"), ("NRG", "Utilities"), ("VST", "Utilities"), ("CEG", "Utilities"),
+    # Real Estate
+    ("AMT", "Real Estate"), ("PLD", "Real Estate"), ("CCI", "Real Estate"), ("EQIX", "Real Estate"),
+    ("PSA", "Real Estate"), ("SPG", "Real Estate"), ("O", "Real Estate"), ("WELL", "Real Estate"),
+    ("DLR", "Real Estate"), ("AVB", "Real Estate"), ("EQR", "Real Estate"), ("VTR", "Real Estate"),
+    ("INVH", "Real Estate"), ("SBAC", "Real Estate"), ("WY", "Real Estate"), ("ARE", "Real Estate"),
+    ("VNO", "Real Estate"), ("BXP", "Real Estate"), ("SLG", "Real Estate"), ("HST", "Real Estate"),
+    # Materials
+    ("LIN", "Materials"), ("APD", "Materials"), ("SHW", "Materials"), ("FCX", "Materials"),
+    ("NEM", "Materials"), ("DOW", "Materials"), ("DD", "Materials"), ("EMN", "Materials"),
+    ("FMC", "Materials"), ("CTVA", "Materials"), ("CF", "Materials"), ("MOS", "Materials"),
+    ("NUE", "Materials"), ("STLD", "Materials"), ("X", "Materials"), ("AA", "Materials"),
+    ("IFF", "Materials"), ("PPG", "Materials"), ("ALB", "Materials"), ("MPC", "Materials"),
+]
 
+
+def get_sp500_tickers():
+    """Obtiene los tickers del S&P 500 desde la lista hardcodeada."""
     try:
-        tables = pd.read_html(url)
-        df = tables[0]
-        tickers_data = df[['Symbol', 'GICS Sector']].copy()
-        tickers_data.columns = ['ticker', 'sector']
-        tickers_data['ticker'] = tickers_data['ticker'].str.replace('.', '-', regex=False)
-        logger.info(f"Obtenidos {len(tickers_data)} tickers del S&P 500")
-        return tickers_data
+        df = pd.DataFrame(SP500_TICKERS, columns=['ticker', 'sector'])
+        # Limpiar tickers (algunos pueden tener puntos)
+        df['ticker'] = df['ticker'].str.replace('.', '-', regex=False)
+        # Eliminar duplicados
+        df = df.drop_duplicates(subset=['ticker'])
+        logger.info(f"Obtenidos {len(df)} tickers del S&P 500")
+        return df
     except Exception as e:
         logger.error(f"Error obteniendo tickers: {e}")
         return None
