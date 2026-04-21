@@ -1,0 +1,52 @@
+# .github/workflows/rebalance.yml
+
+name: Portfolio Rebalance
+
+on:
+  schedule:
+    # Lunes 7:00 UTC y Jueves 7:00 UTC
+    - cron: "0 7 * * 1"
+    - cron: "0 7 * * 4"
+  
+  # También ejecutable manualmente desde GitHub UI
+  workflow_dispatch:
+
+jobs:
+  rebalance:
+    runs-on: ubuntu-latest   # GRATUITO en repos públicos
+    timeout-minutes: 60
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run rebalance
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python rebalance.py
+      
+      - name: Commit results (audit trail)
+        run: |
+          git config user.name "Portfolio Bot"
+          git config user.email "bot@portfolio.com"
+          git add data/
+          git diff --staged --quiet || git commit -m \
+            "Rebalance $(date +%Y-%m-%d): auto-generated thesis + positions"
+          git push
+      
+      - name: Upload rebalance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: rebalance-report
+          path: data/rebalances/
