@@ -1,0 +1,9 @@
+portfolio:
+  max_positions: 15
+  max_position_size: 0.10     # cap ~10% por nombre
+  min_position_size: 0.04     # mínimo ~4%
+
+turnover:
+  rolling_window_days: 5       # (no lo usa el script actual, pero lo dejamos)
+  max_one_sided_turnover: 0.30
+  min_position_change: 0.04
