@@ -4,35 +4,40 @@ name: Portfolio Rebalance
 
 on:
   schedule:
-    - cron: "0 7 * * 1"   # Lunes 7:00 UTC
-    - cron: "0 7 * * 4"   # Jueves 7:00 UTC
-  workflow_dispatch:        # Ejecución manual desde GitHub UI
+    - cron: "0 7 * * 1"    # Lunes 7:00 UTC
+    - cron: "0 7 * * 4"    # Jueves 7:00 UTC
+  workflow_dispatch:         # Ejecución manual desde GitHub UI
 
 jobs:
   rebalance:
     runs-on: ubuntu-latest
     timeout-minutes: 60
-    
+
     steps:
+
+      # ── 1. Código ────────────────────────────────────────
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
+      # ── 2. Python ────────────────────────────────────────
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
           cache: "pip"
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
+
+      # ── 3. Rebalanceo ────────────────────────────────────
       - name: Run rebalance
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: python rebalance.py
-      
+
+      # ── 4. Audit trail via git ───────────────────────────
       - name: Commit results
         run: |
           git config user.name "Portfolio Bot"
@@ -42,17 +47,18 @@ jobs:
             "Rebalance $(date +%Y-%m-%d): auto-generated"
           git push
 
-      # ── ARREGLADO: v4 en lugar de v3 ──────────────────
+      # ── 5. Artefacto (v4 corregido) ──────────────────────
       - name: Upload rebalance report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: rebalance-report-${{ github.run_id }}
           path: data/rebalances/
           retention-days: 90
 
-      # ── EMAIL NOTIFICATION ─────────────────────────────
-      - name: Send email notification
-        if: always()   # Envía también si hay error
+      # ── 6. Email si el rebalanceo fue bien ───────────────
+      - name: Send success email
+        if: success()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -60,19 +66,30 @@ jobs:
           secure: true
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          to: ${{ secrets.EMAIL_TO }}
+          to: ${{ vars.EMAIL_TO }}
           from: Portfolio Autopilot <${{ secrets.EMAIL_USERNAME }}>
-          subject: |
-            Portfolio Rebalance ${{ job.status == 'success' && '✅' || '❌' }} - ${{ github.run_id }}
+          subject: "✅ Portfolio Rebalance OK - ${{ github.run_id }}"
+          html_body: file://data/email_report.json
+          convert_markdown: false
+
+      # ── 7. Email si algo falló ───────────────────────────
+      - name: Send failure email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          to: ${{ vars.EMAIL_TO }}
+          from: Portfolio Autopilot <${{ secrets.EMAIL_USERNAME }}>
+          subject: "❌ Portfolio Rebalance FAILED - ${{ github.run_id }}"
           body: |
-            Rebalance ejecutado: ${{ github.run_id }}
-            Estado: ${{ job.status }}
+            El rebalanceo ha fallado.
+
+            Run ID: ${{ github.run_id }}
             Fecha: ${{ github.event.head_commit.timestamp }}
-            
-            Ver resultados completos:
+
+            Ver logs completos:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-            
-            Ver portfolio actualizado:
-            https://github.com/${{ github.repository }}/blob/main/data/positions/current.json
-          # Email con el reporte adjunto
-          attachments: data/rebalances/*.json
