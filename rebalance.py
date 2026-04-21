@@ -696,89 +696,180 @@ def generate_email_report(result: dict, all_thesis: list,
     today       = datetime.now().strftime("%Y-%m-%d")
     added       = result["added_names"]
     dropped     = result["dropped_names"]
-    changes_str = (
-        f"+{','.join(added)}" if added else ""
-    ) + (
-        f" -{','.join(dropped)}" if dropped else ""
-    ) or "sin cambios"
+
+    changes_parts = []
+    if added:
+        changes_parts.append(f"+{','.join(added)}")
+    if dropped:
+        changes_parts.append(f"-{','.join(dropped)}")
+    changes_str = " ".join(changes_parts) if changes_parts else "sin cambios"
 
     subject = (
         f"📊 Portfolio {today} | "
         f"EV {result['expected_return']:.1%} | {changes_str}"
     )
 
-    rows = "".join(
-        f"<tr style='border-bottom:1px solid #eee'>"
-        f"<td style='padding:8px'><strong>{t}</strong></td>"
-        f"<td style='padding:8px'>{w:.1%}</td>"
-        f"<td style='padding:8px'>${positions.get(t,{}).get('entry_price') or 0:.2f}</td>"
-        f"<td style='padding:8px'>{'$'+f\"{positions.get(t,{}).get('ev_12m',0):.2f}\" if positions.get(t,{}).get('ev_12m') else '-'}</td>"
-        f"</tr>"
-        for t, w in sorted(result["weights"].items(), key=lambda x: -x[1])
+    # ── Portfolio rows ────────────────────────────────────
+    rows = ""
+    sorted_weights = sorted(
+        result["weights"].items(), key=lambda x: -x[1]
     )
+    for t, w in sorted_weights:
+        pos      = positions.get(t, {})
+        ev       = pos.get("ev_12m")
+        entry    = pos.get("entry_price") or 0
+        ev_str   = f"${ev:.2f}" if ev else "-"
+        rows += (
+            f"<tr style='border-bottom:1px solid #eee'>"
+            f"<td style='padding:8px'><strong>{t}</strong></td>"
+            f"<td style='padding:8px'>{w:.1%}</td>"
+            f"<td style='padding:8px'>${entry:.2f}</td>"
+            f"<td style='padding:8px'>{ev_str}</td>"
+            f"</tr>"
+        )
 
-    kills = "".join(
-        f"<tr style='border-bottom:1px solid #eee'>"
-        f"<td style='padding:8px'><strong>{t}</strong></td>"
-        f"<td style='padding:8px'>{p['weight']:.1%}</td>"
-        f"<td style='padding:8px'>{p.get('kill_condition','')}</td>"
-        f"</tr>"
-        for t, p in positions.items() if p.get("kill_condition")
-    )
+    # ── Kill conditions ───────────────────────────────────
+    kills = ""
+    for t, p in positions.items():
+        kc = p.get("kill_condition", "")
+        if kc:
+            w_str = f"{p['weight']:.1%}"
+            kills += (
+                f"<tr style='border-bottom:1px solid #eee'>"
+                f"<td style='padding:8px'><strong>{t}</strong></td>"
+                f"<td style='padding:8px'>{w_str}</td>"
+                f"<td style='padding:8px'>{kc}</td>"
+                f"</tr>"
+            )
 
-    thesis_html = "".join(
-        f"<div style='border:1px solid #ddd;padding:15px;margin:10px 0;border-radius:5px'>"
-        f"<h3>{th['ticker']} | {th['action']} | {th['weight']:.1%}</h3>"
-        f"<p>EV: <strong style='color:{'#28a745' if th.get('expected_return_pct',0)>0 else '#dc3545'}'>"
-        f"{th.get('expected_return_pct',0):+.1f}%</strong> | "
-        f"Bear: {th.get('bear_downside_pct',0):.1f}% | "
-        f"U/D: {th.get('upside_downside_ratio',0):.2f}x</p>"
-        f"<p style='background:#fff3cd;padding:10px;border-radius:3px'>"
-        f"<strong>Kill:</strong> {th.get('kill_condition','N/A')}</p>"
-        f"<div style='white-space:pre-wrap;font-family:Georgia,serif;line-height:1.6'>"
-        f"{th.get('thesis_text','N/A')}</div></div>"
-        for th in all_thesis
-    )
+    # ── Thesis ────────────────────────────────────────────
+    thesis_html = ""
+    for th in all_thesis:
+        ev_pct    = th.get("expected_return_pct", 0)
+        bear_pct  = th.get("bear_downside_pct", 0)
+        ratio     = th.get("upside_downside_ratio", 0)
+        kill      = th.get("kill_condition", "N/A")
+        text      = th.get("thesis_text", "N/A")
+        ticker    = th["ticker"]
+        action    = th["action"]
+        weight    = th["weight"]
+        ev_color  = "#28a745" if ev_pct > 0 else "#dc3545"
+
+        thesis_html += (
+            f"<div style='border:1px solid #ddd;padding:15px;"
+            f"margin:10px 0;border-radius:5px'>"
+            f"<h3>{ticker} | {action} | {weight:.1%}</h3>"
+            f"<p>EV: <strong style='color:{ev_color}'>"
+            f"{ev_pct:+.1f}%</strong> | "
+            f"Bear: {bear_pct:.1f}% | "
+            f"U/D: {ratio:.2f}x</p>"
+            f"<p style='background:#fff3cd;padding:10px;"
+            f"border-radius:3px'>"
+            f"<strong>Kill:</strong> {kill}</p>"
+            f"<div style='white-space:pre-wrap;"
+            f"font-family:Georgia,serif;line-height:1.6'>"
+            f"{text}</div></div>"
+        )
+
+    # ── Kill conditions table ─────────────────────────────
+    kills_section = ""
+    if kills:
+        kills_section = (
+            "<h2>⚠️ Kill Conditions</h2>"
+            "<table style='width:100%;border-collapse:collapse'>"
+            "<thead><tr style='background:#dc3545;color:white'>"
+            "<th style='padding:10px;text-align:left'>Ticker</th>"
+            "<th style='padding:10px;text-align:left'>Weight</th>"
+            "<th style='padding:10px;text-align:left'>Condición</th>"
+            "</tr></thead>"
+            f"<tbody>{kills}</tbody></table>"
+        )
+
+    thesis_section = ""
+    if thesis_html:
+        thesis_section = f"<h2>🎯 Thesis</h2>{thesis_html}"
+
+    ev_pct_port   = result["expected_return"]
+    risk_adj      = result["risk_adjusted_return"]
+    turnover      = result["turnover_used"]
+    n_positions   = len(result["weights"])
 
     body = f"""<!DOCTYPE html>
-<html><body style="font-family:Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px">
+<html>
+<body style="font-family:Arial,sans-serif;max-width:800px;
+             margin:0 auto;padding:20px">
+
 <h1 style="color:#1a1a2e">📊 Portfolio Rebalance — {today}</h1>
+
 <div style="display:flex;gap:15px;margin:20px 0;flex-wrap:wrap">
-  <div style="background:#f8f9fa;padding:15px;border-radius:8px;flex:1;min-width:110px;text-align:center">
-    <div style="font-size:22px;font-weight:bold;color:#28a745">{result['expected_return']:.1%}</div>
-    <div style="color:#666;font-size:13px">EV 12M</div></div>
-  <div style="background:#f8f9fa;padding:15px;border-radius:8px;flex:1;min-width:110px;text-align:center">
-    <div style="font-size:22px;font-weight:bold">{result['risk_adjusted_return']:.2f}x</div>
-    <div style="color:#666;font-size:13px">Risk-Adj</div></div>
-  <div style="background:#f8f9fa;padding:15px;border-radius:8px;flex:1;min-width:110px;text-align:center">
-    <div style="font-size:22px;font-weight:bold;color:#fd7e14">{result['turnover_used']:.1%}</div>
-    <div style="color:#666;font-size:13px">Turnover</div></div>
-  <div style="background:#f8f9fa;padding:15px;border-radius:8px;flex:1;min-width:110px;text-align:center">
-    <div style="font-size:22px;font-weight:bold">{len(result['weights'])}</div>
-    <div style="color:#666;font-size:13px">Posiciones</div></div>
+  <div style="background:#f8f9fa;padding:15px;border-radius:8px;
+              flex:1;min-width:110px;text-align:center">
+    <div style="font-size:22px;font-weight:bold;color:#28a745">
+      {ev_pct_port:.1%}
+    </div>
+    <div style="color:#666;font-size:13px">EV 12M</div>
+  </div>
+  <div style="background:#f8f9fa;padding:15px;border-radius:8px;
+              flex:1;min-width:110px;text-align:center">
+    <div style="font-size:22px;font-weight:bold">
+      {risk_adj:.2f}x
+    </div>
+    <div style="color:#666;font-size:13px">Risk-Adj</div>
+  </div>
+  <div style="background:#f8f9fa;padding:15px;border-radius:8px;
+              flex:1;min-width:110px;text-align:center">
+    <div style="font-size:22px;font-weight:bold;color:#fd7e14">
+      {turnover:.1%}
+    </div>
+    <div style="color:#666;font-size:13px">Turnover</div>
+  </div>
+  <div style="background:#f8f9fa;padding:15px;border-radius:8px;
+              flex:1;min-width:110px;text-align:center">
+    <div style="font-size:22px;font-weight:bold">
+      {n_positions}
+    </div>
+    <div style="color:#666;font-size:13px">Posiciones</div>
+  </div>
 </div>
+
 <h2>📝 Commentary</h2>
-<div style="background:#f8f9fa;padding:20px;border-radius:8px;white-space:pre-wrap;font-family:Georgia,serif;line-height:1.8">{summary}</div>
+<div style="background:#f8f9fa;padding:20px;border-radius:8px;
+            white-space:pre-wrap;font-family:Georgia,serif;
+            line-height:1.8">
+{summary}
+</div>
+
 <h2>📈 Portfolio</h2>
 <table style="width:100%;border-collapse:collapse">
-  <thead><tr style="background:#1a1a2e;color:white">
-    <th style="padding:10px;text-align:left">Ticker</th>
-    <th style="padding:10px;text-align:left">Weight</th>
-    <th style="padding:10px;text-align:left">Entry</th>
-    <th style="padding:10px;text-align:left">EV 12M</th>
-  </tr></thead>
+  <thead>
+    <tr style="background:#1a1a2e;color:white">
+      <th style="padding:10px;text-align:left">Ticker</th>
+      <th style="padding:10px;text-align:left">Weight</th>
+      <th style="padding:10px;text-align:left">Entry</th>
+      <th style="padding:10px;text-align:left">EV 12M</th>
+    </tr>
+  </thead>
   <tbody>{rows}</tbody>
 </table>
-{"<h2>⚠️ Kill Conditions</h2><table style='width:100%;border-collapse:collapse'><thead><tr style='background:#dc3545;color:white'><th style='padding:10px;text-align:left'>Ticker</th><th style='padding:10px;text-align:left'>Weight</th><th style='padding:10px;text-align:left'>Condición</th></tr></thead><tbody>"+kills+"</tbody></table>" if kills else ""}
-{"<h2>🎯 Thesis</h2>"+thesis_html if thesis_html else ""}
+
+{kills_section}
+
+{thesis_section}
+
 <hr style="margin:30px 0">
-<p style="color:#999;font-size:12px">Not advice, just how I'm sizing my own book.</p>
-</body></html>"""
+<p style="color:#999;font-size:12px">
+  Not advice, just how I'm sizing my own book.
+</p>
+
+</body>
+</html>"""
 
     Path("data").mkdir(parents=True, exist_ok=True)
     with open("data/email_report.json", "w", encoding="utf-8") as f:
-        json.dump({"subject": subject, "body": body}, f,
-                  indent=2, ensure_ascii=False)
+        json.dump(
+            {"subject": subject, "body": body},
+            f, indent=2, ensure_ascii=False
+        )
     print("✓ Email report guardado")
 
 
