@@ -12,17 +12,71 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ── Modelos gratuitos: descubrimiento dinámico ────────────────────────────────
+# ── Modelos: descubrimiento dinámico con filtrado robusto ─────────────────────
 
 last_request_time = {}
 request_counts    = {}
 FREE_MODELS_CACHE = []
 
+# Palabras clave para EXCLUIR modelos que no son LLM de texto
+EXCLUDE_KEYWORDS = [
+    "audio", "image", "vision", "clip", "embed", "lyria",
+    "dall", "whisper", "tts", "ocr", "stable", "midjourney",
+    "flux", "video", "music", "speech", "rerank",
+]
+
+# Modelos conocidos que funcionan bien para análisis de texto
+PREFERRED_MODELS = [
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "meta-llama/llama-3.1-70b-instruct:free",
+    "meta-llama/llama-3.1-8b-instruct:free",
+    "meta-llama/llama-3.2-3b-instruct:free",
+    "mistralai/mistral-7b-instruct:free",
+    "mistralai/mistral-small:free",
+    "google/gemma-2-9b-it:free",
+    "google/gemma-3-12b-it:free",
+    "deepseek/deepseek-r1:free",
+    "deepseek/deepseek-r1-distill-llama-70b:free",
+    "deepseek/deepseek-chat-v3-0324:free",
+    "qwen/qwen-2.5-72b-instruct:free",
+    "qwen/qwen-2.5-7b-instruct:free",
+    "microsoft/phi-3-medium-128k-instruct:free",
+    "microsoft/phi-3-mini-128k-instruct:free",
+]
+
+
+def is_text_model(model: dict) -> bool:
+    """
+    Devuelve True solo si el modelo es un LLM de texto.
+    Excluye modelos de audio, imagen, embeddings, etc.
+    """
+    model_id   = model.get("id", "").lower()
+    model_name = model.get("name", "").lower()
+    arch       = model.get("architecture", {})
+
+    # Excluir por palabras clave en el ID o nombre
+    for kw in EXCLUDE_KEYWORDS:
+        if kw in model_id or kw in model_name:
+            return False
+
+    # Excluir si la arquitectura indica que no es texto
+    modality = arch.get("modality", "")
+    if modality and "text->text" not in modality and modality != "":
+        # Aceptar si no hay modality definida o es text->text
+        if "text" not in modality:
+            return False
+
+    # Excluir si no tiene context_length (señal de que no es LLM)
+    if not model.get("context_length"):
+        return False
+
+    return True
+
 
 def fetch_free_models() -> list:
     """
-    Consulta OpenRouter y devuelve los modelos gratuitos
-    disponibles ahora mismo, ordenados por context_length.
+    Consulta OpenRouter, filtra modelos de texto gratuitos
+    y los ordena priorizando los conocidos buenos.
     """
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
@@ -42,34 +96,59 @@ def fetch_free_models() -> list:
                 f"Error {response.status_code}: {response.text[:200]}"
             )
 
-        models = response.json().get("data", [])
+        all_models = response.json().get("data", [])
 
-        free_models = []
-        for m in models:
+        free_text_models = []
+        for m in all_models:
             model_id = m.get("id", "")
             pricing  = m.get("pricing", {})
 
+            # Solo gratuitos
             is_free = (
                 ":free" in model_id
                 or str(pricing.get("prompt", "1")) == "0"
                 or pricing.get("prompt") == 0
             )
+            if not is_free:
+                continue
 
-            if is_free:
-                free_models.append({
-                    "id":             model_id,
-                    "context_length": m.get("context_length", 4096),
-                    "name":           m.get("name", model_id),
-                })
+            # Solo texto
+            if not is_text_model(m):
+                print(f"    Excluido (no texto): {model_id}")
+                continue
 
-        # Mayor contexto primero (proxy de capacidad)
-        free_models.sort(key=lambda x: x["context_length"], reverse=True)
+            free_text_models.append({
+                "id":             model_id,
+                "context_length": m.get("context_length", 4096),
+                "name":           m.get("name", model_id),
+            })
 
-        print(f"  ✓ {len(free_models)} modelos gratuitos encontrados:")
-        for m in free_models:
-            print(f"    - {m['id']} (ctx: {m['context_length']:,})")
+        # Ordenar: preferidos primero, luego por context_length
+        def sort_key(m):
+            is_preferred = m["id"] in PREFERRED_MODELS
+            pref_index   = (
+                PREFERRED_MODELS.index(m["id"])
+                if is_preferred else 999
+            )
+            return (0 if is_preferred else 1,
+                    pref_index,
+                    -m["context_length"])
 
-        return [m["id"] for m in free_models]
+        free_text_models.sort(key=sort_key)
+
+        ids = [m["id"] for m in free_text_models]
+
+        print(
+            f"  ✓ {len(ids)} modelos de texto gratuitos encontrados:"
+        )
+        for m in free_text_models:
+            tag = "★" if m["id"] in PREFERRED_MODELS else " "
+            print(
+                f"    {tag} {m['id']} "
+                f"(ctx: {m['context_length']:,})"
+            )
+
+        return ids
 
     except Exception as e:
         print(f"  ⚠ Error consultando modelos: {e}")
@@ -83,10 +162,8 @@ def fetch_free_models() -> list:
 
 def get_models_for_task(task: str) -> list:
     """
-    Devuelve modelos ordenados según complejidad de la tarea.
-    thesis/scenario → los de mayor contexto primero.
-    screening       → todos en rotación.
-    macro           → cualquiera.
+    Para thesis/scenario: modelos grandes primero.
+    Para screening/macro: todos, empezando por los más rápidos.
     """
     all_free = FREE_MODELS_CACHE
 
@@ -94,11 +171,13 @@ def get_models_for_task(task: str) -> list:
         return ["meta-llama/llama-3.1-8b-instruct:free"]
 
     if task in ("thesis", "scenario"):
+        # Top mitad (mayor contexto/capacidad)
         top_n     = max(3, len(all_free) // 2)
         preferred = all_free[:top_n]
         rest      = all_free[top_n:]
         return preferred + rest
 
+    # screening y macro: todos
     return all_free
 
 
@@ -108,6 +187,7 @@ def call_openrouter(
     system: str = "",
     max_tokens: int = 1000,
     temperature: float = 0.1,
+    max_retries_per_model: int = 2,
 ) -> str:
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
@@ -124,85 +204,114 @@ def call_openrouter(
     last_error = ""
 
     for model in models:
-        try:
-            now  = time.time()
-            last = last_request_time.get(model, 0)
-            wait = 4 - (now - last)
-            if wait > 0:
-                time.sleep(wait)
+        for attempt in range(max_retries_per_model):
+            try:
+                # Rate limiting: mínimo 5s entre requests al mismo modelo
+                now  = time.time()
+                last = last_request_time.get(model, 0)
+                wait = 5 - (now - last)
+                if wait > 0:
+                    time.sleep(wait)
 
-            messages = []
-            if system:
-                messages.append({"role": "system", "content": system})
-            messages.append({"role": "user", "content": prompt})
-
-            payload = {
-                "model":       model,
-                "messages":    messages,
-                "max_tokens":  max_tokens,
-                "temperature": temperature,
-            }
-
-            print(f"    → {model}...")
-
-            response = requests.post(
-                "https://openrouter.ai/api/v1/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=90,
-            )
-
-            last_request_time[model] = time.time()
-            request_counts[model]    = request_counts.get(model, 0) + 1
-
-            if response.status_code == 429:
-                retry_after = int(
-                    response.headers.get("Retry-After", 10)
+                messages = []
+                if system:
+                    messages.append(
+                        {"role": "system", "content": system}
+                    )
+                messages.append(
+                    {"role": "user", "content": prompt}
                 )
-                print(f"    Rate limit, esperando {retry_after}s...")
-                time.sleep(retry_after + 2)
+
+                payload = {
+                    "model":       model,
+                    "messages":    messages,
+                    "max_tokens":  max_tokens,
+                    "temperature": temperature,
+                }
+
+                attempt_str = (
+                    f" (intento {attempt+1})"
+                    if attempt > 0 else ""
+                )
+                print(f"    → {model}{attempt_str}...")
+
+                response = requests.post(
+                    "https://openrouter.ai/api/v1/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    timeout=90,
+                )
+
+                last_request_time[model] = time.time()
+                request_counts[model] = (
+                    request_counts.get(model, 0) + 1
+                )
+
+                # Rate limit → esperar y reintentar MISMO modelo
+                if response.status_code == 429:
+                    retry_after = int(
+                        response.headers.get("Retry-After", 15)
+                    )
+                    wait_time = retry_after + 5
+                    print(
+                        f"    Rate limit, "
+                        f"esperando {wait_time}s..."
+                    )
+                    time.sleep(wait_time)
+                    continue  # reintenta el mismo modelo
+
+                # Modelo no disponible → siguiente modelo
+                if response.status_code == 404:
+                    print(f"    No disponible: {model}")
+                    last_error = f"404 en {model}"
+                    break  # sal del retry loop, prueba siguiente
+
+                # Error servidor (502, 503...) → esperar y reintentar
+                if response.status_code in (502, 503, 504):
+                    wait_time = 10 * (attempt + 1)
+                    print(
+                        f"    Error {response.status_code}, "
+                        f"esperando {wait_time}s..."
+                    )
+                    time.sleep(wait_time)
+                    continue  # reintenta el mismo modelo
+
+                # Otro error → siguiente modelo
+                if response.status_code != 200:
+                    msg = response.text[:150]
+                    print(
+                        f"    Error {response.status_code}: {msg}"
+                    )
+                    last_error = msg
+                    break
+
+                # Respuesta OK
+                content = (
+                    response.json()["choices"][0]["message"]["content"]
+                )
+
+                if not content or not content.strip():
+                    print(f"    Respuesta vacía, rotando...")
+                    break
+
+                print(f"    ✓ OK")
+                return content.strip()
+
+            except requests.exceptions.Timeout:
+                print(f"    Timeout, reintentando...")
+                last_error = "timeout"
+                time.sleep(5)
                 continue
 
-            if response.status_code == 404:
-                print(f"    No disponible: {model}")
-                last_error = f"404 en {model}"
-                continue
-
-            if response.status_code >= 500:
-                print(f"    Error servidor {response.status_code}")
-                last_error = f"{response.status_code} en {model}"
-                time.sleep(3)
-                continue
-
-            if response.status_code != 200:
-                msg = response.text[:150]
-                print(f"    Error {response.status_code}: {msg}")
-                last_error = msg
-                continue
-
-            content = response.json()["choices"][0]["message"]["content"]
-
-            if not content or not content.strip():
-                print(f"    Respuesta vacía, rotando...")
-                continue
-
-            print(f"    ✓ OK")
-            return content.strip()
-
-        except requests.exceptions.Timeout:
-            print(f"    Timeout en {model}, rotando...")
-            last_error = "timeout"
-            continue
-
-        except Exception as e:
-            print(f"    Excepción: {e}")
-            last_error = str(e)
-            continue
+            except Exception as e:
+                print(f"    Excepción: {e}")
+                last_error = str(e)
+                break
 
     raise Exception(
         f"Todos los modelos fallaron para '{task}'.\n"
         f"Último error: {last_error}\n"
-        f"Modelos probados: {models}"
+        f"Modelos probados: {models[:5]}..."
     )
 
 
@@ -237,7 +346,9 @@ def extract_json(text: str) -> dict:
         except Exception:
             pass
 
-    raise Exception(f"No se encontró JSON válido en:\n{text[:500]}")
+    raise Exception(
+        f"No se encontró JSON válido en:\n{text[:500]}"
+    )
 
 
 # ── Config y estado ───────────────────────────────────────────────────────────
@@ -262,14 +373,17 @@ def load_universe() -> list:
 def get_macro_context() -> str:
     print("  Obteniendo datos de mercado...")
 
-    market_data = f"Fecha de análisis: {datetime.now().strftime('%Y-%m-%d')}\n"
+    market_data = (
+        f"Fecha de análisis: "
+        f"{datetime.now().strftime('%Y-%m-%d')}\n"
+    )
 
     proxies = {
-        "SPY":     "^GSPC",
-        "VIX":     "^VIX",
-        "TNX":     "^TNX",
-        "QQQ":     "QQQ",
-        "DXY":     "DX-Y.NYB",
+        "SPY": "^GSPC",
+        "VIX": "^VIX",
+        "TNX": "^TNX",
+        "QQQ": "QQQ",
+        "DXY": "DX-Y.NYB",
     }
 
     for label, ticker in proxies.items():
@@ -277,7 +391,9 @@ def get_macro_context() -> str:
             hist = yf.Ticker(ticker).history(period="5d")
             if not hist.empty:
                 price  = hist["Close"].iloc[-1]
-                ret_5d = (price / hist["Close"].iloc[0] - 1) * 100
+                ret_5d = (
+                    price / hist["Close"].iloc[0] - 1
+                ) * 100
                 market_data += (
                     f"- {label} ({ticker}): "
                     f"{price:.2f} ({ret_5d:+.1f}% 5d)\n"
@@ -288,8 +404,8 @@ def get_macro_context() -> str:
     prompt = f"""
 {market_data}
 
-Describe el contexto macro actual para un portfolio long-only equity
-en exactamente 150 palabras. Incluye:
+Describe el contexto macro actual para un portfolio long-only
+equity en exactamente 150 palabras. Incluye:
 1. Fed stance y expectativas de tipos (cuantificado)
 2. Estado del ciclo económico
 3. Risk appetite del mercado (referencia VIX)
@@ -309,7 +425,7 @@ def get_stock_data(ticker: str) -> dict:
         info = yf.Ticker(ticker).info
         return {
             "ticker":         ticker,
-            "price":          (
+            "price": (
                 info.get("currentPrice")
                 or info.get("regularMarketPrice")
             ),
@@ -323,7 +439,7 @@ def get_stock_data(ticker: str) -> dict:
             "52w_low":        info.get("fiftyTwoWeekLow"),
             "sector":         info.get("sector"),
             "industry":       info.get("industry"),
-            "description":    (
+            "description": (
                 info.get("longBusinessSummary") or ""
             )[:300],
         }
@@ -376,7 +492,9 @@ Responde SOLO en JSON sin texto adicional:
 
     try:
         result = extract_json(
-            call_openrouter(prompt, task="screening", max_tokens=400)
+            call_openrouter(
+                prompt, task="screening", max_tokens=400
+            )
         )
 
         composite = (
@@ -386,8 +504,12 @@ Responde SOLO en JSON sin texto adicional:
 
         return {
             "ticker":              ticker,
-            "fundamental_score":   result.get("fundamental_score", 0),
-            "forward_setup_score": result.get("forward_setup_score", 0),
+            "fundamental_score":   result.get(
+                "fundamental_score", 0
+            ),
+            "forward_setup_score": result.get(
+                "forward_setup_score", 0
+            ),
             "composite_score":     composite,
             "data_snapshot":       {**data, **result},
         }
@@ -408,15 +530,30 @@ def score_universe(
 ) -> list:
     scores = []
     total  = len(tickers)
+    errors = 0
 
     for i, ticker in enumerate(tickers):
         print(f"  [{i+1}/{total}] {ticker}...")
         score = score_stock(ticker, macro_context)
         scores.append(score)
-        time.sleep(1)
+
+        # Pausa adaptativa: más larga si hay muchos errores
+        pause = 3 if errors < 5 else 6
+        time.sleep(pause)
+
+        if score["composite_score"] == 0:
+            errors += 1
 
     scores.sort(key=lambda x: x["composite_score"], reverse=True)
-    return scores[:top_n]
+
+    # Filtrar los que tienen score 0 (sin datos o error)
+    valid = [s for s in scores if s["composite_score"] > 0]
+    print(
+        f"  ✓ {len(valid)} stocks con score válido "
+        f"de {total} analizados"
+    )
+
+    return valid[:top_n]
 
 
 # ── Scenarios ─────────────────────────────────────────────────────────────────
@@ -429,7 +566,7 @@ def build_scenario(
     price = stock_data.get("price") or 0
 
     prompt = f"""
-Construye un análisis de escenarios completo para {ticker}.
+Construye un análisis de escenarios para {ticker}.
 Precio actual: ${price:.2f}
 
 DATOS:
@@ -446,9 +583,9 @@ DATOS:
 MACRO:
 {macro_context[:300]}
 
-Construye 3 escenarios con price targets en 4 horizontes.
+3 escenarios con price targets en 4 horizontes temporales.
 Las probabilidades DEBEN sumar exactamente 1.0.
-Kill condition: evento CONCRETO y VERIFICABLE, no genérico.
+Kill condition: evento CONCRETO y VERIFICABLE.
 
 Responde SOLO en JSON sin texto adicional:
 {{
@@ -459,9 +596,9 @@ Responde SOLO en JSON sin texto adicional:
     "targets_3m":  {{"bull": <price>, "base": <price>, "bear": <price>}},
     "targets_6m":  {{"bull": <price>, "base": <price>, "bear": <price>}},
     "targets_12m": {{"bull": <price>, "base": <price>, "bear": <price>}},
-    "bull_thesis": "<3-4 frases con drivers específicos>",
-    "base_thesis": "<3-4 frases con drivers específicos>",
-    "bear_thesis": "<3-4 frases con drivers específicos>",
+    "bull_thesis": "<3-4 frases>",
+    "base_thesis": "<3-4 frases>",
+    "bear_thesis": "<3-4 frases>",
     "kill_condition": "<evento concreto y verificable>",
     "key_catalyst": "<próximo catalizador con fecha si existe>"
 }}
@@ -469,11 +606,15 @@ Responde SOLO en JSON sin texto adicional:
 
     try:
         r = extract_json(
-            call_openrouter(prompt, task="scenario", max_tokens=1000)
+            call_openrouter(
+                prompt, task="scenario", max_tokens=1000
+            )
         )
 
         # Normalizar probabilidades
-        total_prob = r["prob_bull"] + r["prob_base"] + r["prob_bear"]
+        total_prob = (
+            r["prob_bull"] + r["prob_base"] + r["prob_bear"]
+        )
         if abs(total_prob - 1.0) > 0.01:
             r["prob_bull"] /= total_prob
             r["prob_base"] /= total_prob
@@ -486,11 +627,11 @@ Responde SOLO en JSON sin texto adicional:
                 + r["prob_bear"] * targets["bear"]
             )
 
-        ev_12m       = ev(r["targets_12m"])
-        bear_12m     = r["targets_12m"]["bear"]
-        bear_down    = (bear_12m - price) / price if price else 0
-        w_upside     = (ev_12m - price) / price if price else 0
-        ud_ratio     = (
+        ev_12m    = ev(r["targets_12m"])
+        bear_12m  = r["targets_12m"]["bear"]
+        bear_down = (bear_12m - price) / price if price else 0
+        w_upside  = (ev_12m - price) / price if price else 0
+        ud_ratio  = (
             abs(w_upside / bear_down) if bear_down != 0 else 0
         )
 
@@ -532,9 +673,9 @@ Responde SOLO en JSON sin texto adicional:
                 "base": price,
                 "bear": price * 0.70,
             },
-            "prob_bull": 0.25,
-            "prob_base": 0.50,
-            "prob_bear": 0.25,
+            "prob_bull":   0.25,
+            "prob_base":   0.50,
+            "prob_bear":   0.25,
             "bull_thesis": "N/A",
             "base_thesis": "N/A",
             "bear_thesis": "N/A",
@@ -556,7 +697,6 @@ def optimize_portfolio(
     min_w   = config["portfolio"]["min_position_size"]
     max_to  = config["turnover"]["max_one_sided_turnover"]
 
-    # Solo candidatos con EV positivo y ratio > 0
     candidates = [
         s for s in scenarios
         if s.get("ev_12m", 0) > s.get("current_price", 0)
@@ -706,8 +846,7 @@ PARÁMETROS:
 ${scenario.get('targets_12m', {}).get('bull', 0):.2f}
 - Base  ({scenario.get('prob_base', 0):.0%}): \
 ${scenario.get('targets_12m', {}).get('base', 0):.2f}
-- Bear  ({scenario.get('prob_bear', 0):.0%}): \
-${bear_12m:.2f}
+- Bear  ({scenario.get('prob_bear', 0):.0%}): ${bear_12m:.2f}
 - EV 12M: ${ev_12m:.2f} ({ev_pct:+.1f}%)
 - Bear downside: {bear_pct:.1f}%
 - U/D ratio: {ratio:.2f}x
@@ -775,7 +914,9 @@ vs bear {bear_pct:.1f}%. Ratio {ratio:.2f}x.
 
     Path("data/thesis").mkdir(parents=True, exist_ok=True)
     filename = f"{ts[:10]}_{ticker}_{action}.json"
-    with open(f"data/thesis/{filename}", "w", encoding="utf-8") as f:
+    with open(
+        f"data/thesis/{filename}", "w", encoding="utf-8"
+    ) as f:
         json.dump(thesis, f, indent=2, ensure_ascii=False)
 
     return thesis
@@ -854,7 +995,6 @@ def generate_email_report(
         f"EV {result['expected_return']:.1%} | {changes_str}"
     )
 
-    # Portfolio rows
     rows = ""
     for ticker, w in sorted(
         result["weights"].items(), key=lambda x: -x[1]
@@ -863,7 +1003,9 @@ def generate_email_report(
         ev  = pos.get("ev_12m")
         rows += f"""
         <tr style="border-bottom:1px solid #eee;">
-            <td style="padding:8px;"><strong>{ticker}</strong></td>
+            <td style="padding:8px;">
+                <strong>{ticker}</strong>
+            </td>
             <td style="padding:8px;">{w:.1%}</td>
             <td style="padding:8px;">
                 ${pos.get('entry_price') or 0:.2f}
@@ -873,7 +1015,6 @@ def generate_email_report(
             </td>
         </tr>"""
 
-    # Kill conditions
     kills = ""
     for ticker, pos in positions.items():
         kc = pos.get("kill_condition", "")
@@ -887,7 +1028,6 @@ def generate_email_report(
                 <td style="padding:8px;">{kc}</td>
             </tr>"""
 
-    # Thesis del día
     thesis_html = ""
     for t in all_thesis:
         ev_pct = t.get("expected_return_pct", 0)
@@ -900,7 +1040,9 @@ def generate_email_report(
             </h3>
             <p>
                 EV 12M:
-                <strong style="color:{color}">{ev_pct:+.1f}%</strong>
+                <strong style="color:{color}">
+                    {ev_pct:+.1f}%
+                </strong>
                 &nbsp;|&nbsp;
                 Bear: {t.get('bear_downside_pct', 0):.1f}%
                 &nbsp;|&nbsp;
@@ -928,30 +1070,35 @@ def generate_email_report(
 </h1>
 
 <div style="display:flex;gap:15px;margin:20px 0;flex-wrap:wrap;">
-    <div style="background:#f8f9fa;padding:15px;border-radius:8px;
-                flex:1;min-width:120px;text-align:center;">
-        <div style="font-size:22px;font-weight:bold;color:#28a745;">
+    <div style="background:#f8f9fa;padding:15px;
+                border-radius:8px;flex:1;
+                min-width:120px;text-align:center;">
+        <div style="font-size:22px;font-weight:bold;
+                    color:#28a745;">
             {result['expected_return']:.1%}
         </div>
         <div style="color:#666;font-size:13px;">EV 12M</div>
     </div>
-    <div style="background:#f8f9fa;padding:15px;border-radius:8px;
-                flex:1;min-width:120px;text-align:center;">
+    <div style="background:#f8f9fa;padding:15px;
+                border-radius:8px;flex:1;
+                min-width:120px;text-align:center;">
         <div style="font-size:22px;font-weight:bold;">
             {result['risk_adjusted_return']:.2f}x
         </div>
         <div style="color:#666;font-size:13px;">Risk-Adj</div>
     </div>
-    <div style="background:#f8f9fa;padding:15px;border-radius:8px;
-                flex:1;min-width:120px;text-align:center;">
+    <div style="background:#f8f9fa;padding:15px;
+                border-radius:8px;flex:1;
+                min-width:120px;text-align:center;">
         <div style="font-size:22px;font-weight:bold;
                     color:#fd7e14;">
             {result['turnover_used']:.1%}
         </div>
         <div style="color:#666;font-size:13px;">Turnover</div>
     </div>
-    <div style="background:#f8f9fa;padding:15px;border-radius:8px;
-                flex:1;min-width:120px;text-align:center;">
+    <div style="background:#f8f9fa;padding:15px;
+                border-radius:8px;flex:1;
+                min-width:120px;text-align:center;">
         <div style="font-size:22px;font-weight:bold;">
             {len(result['weights'])}
         </div>
@@ -970,16 +1117,24 @@ def generate_email_report(
 <table style="width:100%;border-collapse:collapse;">
     <thead>
         <tr style="background:#1a1a2e;color:white;">
-            <th style="padding:10px;text-align:left;">Ticker</th>
-            <th style="padding:10px;text-align:left;">Weight</th>
-            <th style="padding:10px;text-align:left;">Entry</th>
-            <th style="padding:10px;text-align:left;">EV 12M</th>
+            <th style="padding:10px;text-align:left;">
+                Ticker
+            </th>
+            <th style="padding:10px;text-align:left;">
+                Weight
+            </th>
+            <th style="padding:10px;text-align:left;">
+                Entry
+            </th>
+            <th style="padding:10px;text-align:left;">
+                EV 12M
+            </th>
         </tr>
     </thead>
     <tbody>{rows}</tbody>
 </table>
 
-{"<h2>⚠️ Kill Conditions activas</h2><table style='width:100%;border-collapse:collapse;'><thead><tr style='background:#dc3545;color:white;'><th style='padding:10px;text-align:left;'>Ticker</th><th style='padding:10px;text-align:left;'>Weight</th><th style='padding:10px;text-align:left;'>Kill Condition</th></tr></thead><tbody>" + kills + "</tbody></table>" if kills else ""}
+{"<h2>⚠️ Kill Conditions</h2><table style='width:100%;border-collapse:collapse;'><thead><tr style='background:#dc3545;color:white;'><th style='padding:10px;text-align:left;'>Ticker</th><th style='padding:10px;text-align:left;'>Weight</th><th style='padding:10px;text-align:left;'>Kill Condition</th></tr></thead><tbody>" + kills + "</tbody></table>" if kills else ""}
 
 {"<h2>🎯 Thesis generadas</h2>" + thesis_html if thesis_html else ""}
 
@@ -992,7 +1147,9 @@ def generate_email_report(
 </html>"""
 
     Path("data").mkdir(parents=True, exist_ok=True)
-    with open("data/email_report.json", "w", encoding="utf-8") as f:
+    with open(
+        "data/email_report.json", "w", encoding="utf-8"
+    ) as f:
         json.dump(
             {"subject": subject, "body": body},
             f,
@@ -1067,10 +1224,13 @@ def run_rebalance():
 
     if not FREE_MODELS_CACHE:
         raise Exception(
-            "No hay modelos gratuitos disponibles. "
+            "No hay modelos de texto gratuitos disponibles. "
             "Verifica tu API key en openrouter.ai"
         )
-    print(f"  Usando {len(FREE_MODELS_CACHE)} modelos en rotación\n")
+    print(
+        f"  Usando {len(FREE_MODELS_CACHE)} modelos "
+        f"en rotación\n"
+    )
 
     # 1. Cargar config y estado
     config            = load_config()
@@ -1104,7 +1264,7 @@ def run_rebalance():
             ticker, score["data_snapshot"], macro
         )
         scenarios[ticker] = scenario
-        time.sleep(1.5)
+        time.sleep(2)
     print(f"✓ {len(scenarios)} scenarios\n")
 
     # 5. Optimize
@@ -1127,8 +1287,8 @@ def run_rebalance():
     min_change = config["turnover"]["min_position_change"]
 
     for ticker, weight in result["weights"].items():
-        old_w = current_weights.get(ticker, 0)
-        diff  = weight - old_w
+        old_w  = current_weights.get(ticker, 0)
+        diff   = weight - old_w
 
         if ticker in result["added_names"]:
             action = "OPEN"
@@ -1139,7 +1299,8 @@ def run_rebalance():
 
         if action != "HOLD" and ticker in scenarios:
             thesis = generate_thesis(
-                ticker, scenarios[ticker], weight, action, macro
+                ticker, scenarios[ticker],
+                weight, action, macro
             )
             all_thesis.append(thesis)
             print(f"  ✓ {ticker} [{action}]")
@@ -1148,7 +1309,8 @@ def run_rebalance():
     for ticker in result["dropped_names"]:
         if ticker in scenarios:
             thesis = generate_thesis(
-                ticker, scenarios[ticker], 0.0, "CLOSE", macro
+                ticker, scenarios[ticker],
+                0.0, "CLOSE", macro
             )
             all_thesis.append(thesis)
             print(f"  ✓ {ticker} [CLOSE]")
@@ -1156,12 +1318,11 @@ def run_rebalance():
 
     # 7. Commentary
     print("\n📣 Commentary...")
-    summary          = generate_rebalance_summary(
+    summary              = generate_rebalance_summary(
         result, all_thesis, macro
     )
     result["commentary"] = summary
 
-    # Añadir commentary al JSON de rebalanceo
     today   = datetime.now().strftime("%Y-%m-%d")
     rb_file = Path(f"data/rebalances/{today}_rebalance.json")
     if rb_file.exists():
@@ -1170,13 +1331,13 @@ def run_rebalance():
         with open(rb_file, "w") as f:
             json.dump(rb, f, indent=2)
 
-    # 8. Guardar posiciones
+    # 8. Guardar
     positions = save_results(result, scenarios)
 
-    # 9. Email report
+    # 9. Email
     generate_email_report(result, all_thesis, summary, positions)
 
-    # 10. Resumen de uso de API
+    # 10. Resumen uso API
     print(f"\n📊 API calls por modelo:")
     for model, count in sorted(
         request_counts.items(), key=lambda x: -x[1]
