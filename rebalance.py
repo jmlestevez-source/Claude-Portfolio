@@ -525,6 +525,11 @@ def build_scenario(
     high_52 = stock_data.get("52w_high")
     macro_s = macro_context[:150]
 
+    # Calcular rangos razonables para anclar al modelo
+    bear_floor  = round(price * 0.65, 2)  # Max -35%
+    bull_ceil   = round(price * 1.60, 2)  # Max +60%
+    bear_min    = round(price * 0.75, 2)  # Min bear -25%
+
     prompt = (
         f"Construye 3 escenarios para {ticker} "
         f"a precio actual ${price:.2f}.\n\n"
@@ -533,15 +538,31 @@ def build_scenario(
         f"margenes={margins}, "
         f"rango_52s=[{low_52}, {high_52}]\n\n"
         f"Macro: {macro_s}\n\n"
-        "Las probabilidades DEBEN sumar "
-        "exactamente 1.0.\n"
-        "La kill_condition debe ser un evento "
-        "CONCRETO y VERIFICABLE que invalide "
-        "la tesis estructural (no un stop loss "
-        "por precio). Ejemplo: caida de guidance, "
-        "perdida de cuota de mercado clave, "
-        "cambio regulatorio especifico.\n"
-        "Todos los textos en espanol.\n\n"
+        "REGLAS OBLIGATORIAS:\n"
+        "1. Las probabilidades DEBEN sumar 1.0\n"
+        f"2. El target bajista DEBE estar entre "
+        f"${bear_floor} y ${bear_min} "
+        f"(entre -25% y -35% del precio actual). "
+        f"Un bear case de menos del 10% de caida "
+        f"no es creible.\n"
+        f"3. El target alcista DEBE estar por debajo "
+        f"de ${bull_ceil} (+60% maximo)\n"
+        "4. La kill_condition debe ser un evento "
+        "ESPECIFICO y VERIFICABLE PARA ESTA EMPRESA "
+        "en concreto. No usar frases genericas como "
+        "'caida en guidance' sin especificar que "
+        "metrica concreta, que umbral numerico "
+        "y en que fecha o evento. "
+        "Ejemplo correcto: 'Reduccion del NRR "
+        "por debajo del 115% en Q2 2025 combinada "
+        "con corte del guidance anual de ingresos'. "
+        "Ejemplo incorrecto: 'caida en guidance "
+        "de la empresa'.\n"
+        "5. Los catalizadores deben ser eventos "
+        "reales con fecha aproximada conocida "
+        "(earnings, conferencias, vencimientos "
+        "regulatorios). No inventar fechas.\n"
+        "6. Todos los textos en espanol.\n\n"
         "Devuelve SOLO este JSON:\n"
         "{{\n"
         '  "prob_bull": <float>,\n'
@@ -555,13 +576,13 @@ def build_scenario(
         '"base": <precio>, "bear": <precio>}},\n'
         '  "targets_12m": {{"bull": <precio>, '
         '"base": <precio>, "bear": <precio>}},\n'
-        '  "bull_thesis": "<2 frases en espanol>",\n'
-        '  "base_thesis": "<2 frases en espanol>",\n'
-        '  "bear_thesis": "<2 frases en espanol>",\n'
-        '  "kill_condition": '
-        '"<evento concreto verificable en espanol>",\n'
-        '  "key_catalyst": '
-        '"<proximo catalizador con fecha si existe>"\n'
+        '  "bull_thesis": "<2 frases especificas>",\n'
+        '  "base_thesis": "<2 frases especificas>",\n'
+        '  "bear_thesis": "<2 frases especificas>",\n'
+        '  "kill_condition": "<metrica concreta + '
+        'umbral numerico + evento especifico>",\n'
+        '  "key_catalyst": "<evento real con fecha '
+        'aproximada, sin inventar>"\n'
         "}}"
     )
 
@@ -570,6 +591,7 @@ def build_scenario(
             prompt, task="scenario", max_tokens=700
         )
 
+        # Normalizar probabilidades
         total_p = (
             r["prob_bull"]
             + r["prob_base"]
@@ -579,6 +601,17 @@ def build_scenario(
             r["prob_bull"] /= total_p
             r["prob_base"] /= total_p
             r["prob_bear"] /= total_p
+
+        # Validar y corregir bear case si es irreal
+        bear_12m = r["targets_12m"]["bear"]
+        if bear_12m > price * 0.90:
+            # Bear case menor al 10%: forzar a -25%
+            factor = bear_12m / price
+            for h in ["targets_1m", "targets_3m",
+                      "targets_6m", "targets_12m"]:
+                r[h]["bear"] = round(
+                    r[h]["bear"] / factor * 0.75, 2
+                )
 
         def ev(t: dict) -> float:
             return (
@@ -649,7 +682,6 @@ def build_scenario(
             "bear_thesis": "N/D",
         }
 
-
 # ── Optimizer ─────────────────────────────────────────────────────────────────
 
 def optimize_portfolio(
@@ -713,6 +745,17 @@ def optimize_portfolio(
         port_risk = np.dot(w, bear_d)
         return -(port_ev / (port_risk + 0.001))
 
+    # ── FIX: turnover incluye también posiciones
+    # que se cierran (no están en candidates)
+    def turnover_constraint(w):
+        buys = np.sum(np.maximum(w - current_w, 0))
+        # Añadir el peso de posiciones que se cierran
+        closed = sum(
+            v for t, v in current_weights.items()
+            if t not in tickers
+        )
+        return max_to - buys - closed
+
     result = minimize(
         objective,
         np.full(n, 1.0 / min(max_pos, n)),
@@ -725,9 +768,7 @@ def optimize_portfolio(
             },
             {
                 "type": "ineq",
-                "fun":  lambda w: max_to - np.sum(
-                    np.maximum(w - current_w, 0)
-                ),
+                "fun":  turnover_constraint,
             },
         ],
         options={"maxiter": 1000, "ftol": 1e-9},
@@ -831,7 +872,10 @@ def generate_thesis(
         "Eres un gestor de portfolio profesional. "
         "Escribe en primera persona. "
         "Se directo, cuantitativo y especifico. "
-        "Sin lenguaje vago. "
+        "Cada afirmacion debe ser falsable y "
+        "verificable. "
+        "Sin lenguaje vago ni generalizaciones. "
+        "No inventes fechas ni datos. "
         "Responde SIEMPRE en espanol."
     )
 
@@ -850,33 +894,49 @@ def generate_thesis(
         f"{scenario.get('base_thesis', '')}\n"
         f"Caso bajista ({pbe:.0%}): "
         f"{scenario.get('bear_thesis', '')}\n\n"
-        f"Kill condition: {kill}\n"
+        f"Kill condition ya definida: {kill}\n"
         f"Catalizador: {cat}\n"
         f"Contexto macro: {macro_s}\n\n"
+        "REGLAS PARA LA TESIS:\n"
+        "1. La kill condition en la tesis debe ser "
+        "IDENTICA a la ya definida arriba, "
+        "no la cambies ni la generalices.\n"
+        "2. El sizing debe explicar por que ese peso "
+        "especifico considerando el ratio U/D y el "
+        "bear case en dolares absolutos.\n"
+        "3. El checkpoint debe mencionar un evento "
+        "real y proximo (siguiente earnings, "
+        "conferencia conocida, dato macro concreto). "
+        "No inventes fechas.\n"
+        "4. No uses frases como 'podria', 'quizas', "
+        "'posiblemente'. Usa afirmaciones directas.\n\n"
         "Usa este formato EXACTO:\n"
         "---\n"
         f"TESIS: {ticker} | {accion_es} | "
         f"{weight:.1%} | {ts}\n"
         "---\n"
         "**Oportunidad:** [por que existe la "
-        "oportunidad ahora, 2 frases concretas]\n\n"
+        "oportunidad ahora, 2 frases concretas "
+        "con datos especificos]\n\n"
         f"**Caso alcista ({pb:.0%}):** "
-        f"[drivers especificos. "
+        f"[drivers especificos con metricas. "
         f"Objetivo ${bull_t:.2f}]\n\n"
         f"**Caso base ({pba:.0%}):** "
-        f"[ejecucion esperada. "
+        f"[ejecucion esperada con metricas. "
         f"Objetivo ${base_t:.2f}]\n\n"
         f"**Caso bajista ({pbe:.0%}):** "
-        f"[riesgos principales. "
+        f"[riesgos especificos con metricas. "
         f"Objetivo ${bear_12m:.2f}]\n\n"
         f"**Valor esperado:** ${ev_12m:.2f} "
         f"({ev_pct:+.1f}%) vs bajista "
         f"{bear_pct:.1f}%. Ratio {ratio:.2f}x.\n\n"
-        f"**Sizing:** [por que {weight:.1%} "
-        f"y no mas o menos]\n\n"
+        f"**Sizing:** [por que {weight:.1%}: "
+        f"relacion con ratio U/D de {ratio:.2f}x "
+        f"y bear case de ${bear_12m:.2f}]\n\n"
         f"**Kill condition:** {kill}\n\n"
         "**Proximo checkpoint:** "
-        "[cuando y que vigilar exactamente]\n"
+        "[evento real y proximo con fecha "
+        "aproximada conocida]\n"
         "---"
     )
 
@@ -917,7 +977,6 @@ def generate_thesis(
         )
 
     return thesis
-
 
 def generate_rebalance_summary(
     result: dict,
