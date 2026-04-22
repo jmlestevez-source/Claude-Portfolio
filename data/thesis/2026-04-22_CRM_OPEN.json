@@ -1,0 +1,16 @@
+{
+  "ticker": "CRM",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.10077519816522712,
+  "timestamp": "2026-04-22T20:05:09.968297",
+  "price_at_thesis": 189.795,
+  "ev_12m": 261.0,
+  "expected_return_pct": 37.51679443610212,
+  "bear_downside_pct": 15.914539371427075,
+  "upside_downside_ratio": 2.357391160403906,
+  "kill_condition": "Una caída en el guidance de la empresa o una pérdida significativa de cuota de mercado en un sector clave",
+  "key_catalyst": "La próxima reunión de inversores de la empresa, programada para el 15 de mayo",
+  "thesis_text": "---\nTESIS: CRM | ABRIR | 10.1% | 2026-04-22T20:05:09.968297\n---\n**Oportunidad:** La empresa CRM sigue mostrando un crecimiento sólido en ingresos y margenes, lo que sugiere un futuro prometedor. La expansión del mercado y la adopción de tecnologías de CRM seguirán impulsando el crecimiento de la empresa, lo que representa una oportunidad de inversión atractiva en el corto plazo.\n\n**Caso alcista (40%):** La empresa CRM puede experimentar un crecimiento acelerado en sus ingresos y margenes debido a la adopción generalizada de tecnologías de CRM, la expansión a nuevos mercados y la innovación en productos y servicios. El objetivo en este caso es alcanzar un precio de $300.00, lo que representa un aumento del 58% con respecto al precio actual.\n\n**Caso base (30%):** La empresa CRM seguirá ejecutando su estrategia de crecimiento, manteniendo su posición de liderazgo en el mercado y generando ingresos y margenes estables. El objetivo en este caso es alcanzar un precio de $250.00, lo que representa un aumento del 31.5% con respecto al precio actual.\n\n**Caso bajista (30%):** La empresa CRM puede enfrentar una disminución en la demanda de sus productos y servicios debido a la saturación del mercado y la competencia de nuevas tecnologías, lo que podría llevar a una caída en los ingresos y la rentabilidad. El objetivo en este caso es alcanzar un precio de $220.00, lo que representa una disminución del 15.9% con respecto al precio actual.\n\n**Valor esperado:** $261.00 (+37.5%) vs bajista 15.9%. Ratio 2.36x.\n\n**Sizing:** La asignación del 10.1% se debe a que la empresa CRM tiene un historial de crecimiento sólido y una posición de liderazgo en el mercado, lo que reduce el riesgo de inversión. Sin embargo, la competencia intensa y la posible saturación del mercado justifican una asignación moderada.\n\n**Kill condition:** Una caída en el guidance de la empresa o una pérdida significativa de cuota de mercado en un sector clave.\n\n**Proximo checkpoint:** La próxima reunión de inversores de la empresa, programada para el 15 de mayo, donde se espera que la empresa presente sus resultados financieros y su estrategia de crecimiento para el futuro. Se vigilará de cerca la guía de la empresa y cualquier anuncio relacionado con la expansión del mercado o la innovación en productos y servicios.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}

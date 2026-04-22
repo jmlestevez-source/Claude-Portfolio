@@ -1,0 +1,16 @@
+{
+  "ticker": "CRWD",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.10077519816504232,
+  "timestamp": "2026-04-22T20:05:06.082603",
+  "price_at_thesis": 466.68,
+  "ev_12m": 592.0,
+  "expected_return_pct": 26.853518470900827,
+  "bear_downside_pct": -1.4313876746378689,
+  "upside_downside_ratio": 18.760479041916145,
+  "kill_condition": "Una caída en el guidance de ingresos de CRWD para el próximo año fiscal",
+  "key_catalyst": "La próxima reunión de la Fed el 15 de marzo",
+  "thesis_text": "---\nTESIS: CRWD | ABRIR | 10.1% | 2026-04-22T20:05:06.082603\n---\n**Oportunidad:** La oportunidad de invertir en CRWD se presenta ahora debido a la combinación de un crecimiento sólido en ingresos y margenes, junto con una valoración razonable en comparación con sus pares. La próxima reunión de la Fed el 15 de marzo puede proporcionar una señal de confianza para el mercado y potencialmente impulsar el precio de CRWD.\n\n**Caso alcista (40%):** La empresa sigue mostrando un crecimiento sólido en ingresos y margenes, lo que sugiere un futuro prometedor. La expansión del mercado y la adopción de nuevas tecnologías pueden impulsar el crecimiento de CRWD, con un objetivo de precio de $700.00.\n\n**Caso base (30%):** El contexto macro actual de crecimiento moderado y la postura neutral de la Fed pueden mantener el precio de CRWD estable. La empresa puede seguir creciendo, pero a un ritmo más lento, con un objetivo de precio de $580.00.\n\n**Caso bajista (30%):** La valoración actual de CRWD es alta en comparación con sus pares, lo que puede hacer que el precio disminuya. Un cambio en la política monetaria o una desaceleración del crecimiento económico pueden afectar negativamente a la empresa, con un objetivo de precio de $460.00.\n\n**Valor esperado:** $592.00 (+26.9%) vs bajista -1.4%. Ratio 18.76x.\n\n**Sizing:** La asignación del 10.1% se debe a la combinación de la oportunidad de crecimiento y la valoración razonable de CRWD, lo que sugiere un potencial de retorno atractivo en relación con el riesgo asumido. Un tamaño mayor podría aumentar el riesgo de pérdida en caso de un escenario bajista, mientras que un tamaño menor podría no aprovechar completamente la oportunidad de crecimiento.\n\n**Kill condition:** Una caída en el guidance de ingresos de CRWD para el próximo año fiscal\n\n**Proximo checkpoint:** La próxima reunión de la Fed el 15 de marzo, donde se vigilará la postura de la Fed y su impacto en el mercado, así como la reacción de CRWD al anuncio. También se vigilarán los resultados financieros de CRWD y su guidance para el próximo año fiscal.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}

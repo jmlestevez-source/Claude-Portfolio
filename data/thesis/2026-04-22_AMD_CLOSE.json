@@ -1,0 +1,16 @@
+{
+  "ticker": "AMD",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-22T20:05:24.824238",
+  "price_at_thesis": 303.46,
+  "ev_12m": 338.0,
+  "expected_return_pct": 11.382060238581698,
+  "bear_downside_pct": -34.09345548012917,
+  "upside_downside_ratio": 0.3338488304658808,
+  "kill_condition": "Una caída en el guidance de ingresos de AMD para el próximo año, indicando una desaceleración en el crecimiento de la empresa.",
+  "key_catalyst": "La próxima presentación de resultados financieros de AMD, programada para el 26 de julio",
+  "thesis_text": "---\nTESIS: AMD | CERRAR | 0.0% | 2026-04-22T20:05:24.824238\n---\n**Oportunidad:** La oportunidad de cerrar la posición en AMD se presenta ahora debido a que el precio actual de $303.46 se encuentra cerca del valor esperado de $338.00, lo que sugiere que el potencial de crecimiento a corto plazo es limitado. Además, la próxima presentación de resultados financieros de AMD el 26 de julio puede ser un catalizador para una reevaluación del precio de las acciones.\n\n**Caso alcista (45%):** El crecimiento sólido en el sector de semiconductores, impulsado por la demanda creciente de productos de alta tecnología, podría llevar el precio de las acciones a $420.00 en el mediano plazo. La empresa AMD sigue mostrando una ejecución sólida y una posición competitiva en el mercado, lo que podría impulsar el crecimiento de las ventas y la rentabilidad.\n\n**Caso base (30%):** La ejecución esperada de AMD en un contexto macro de crecimiento moderado y una postura neutral de la Fed podría mantener el precio de las acciones en un rango estable, sin grandes fluctuaciones en el corto plazo. El objetivo en este escenario es $330.00, lo que refleja una valoración razonable de la empresa en función de sus fundamentos.\n\n**Caso bajista (25%):** La competencia intensa en el sector de semiconductores y los posibles desafíos para mantener la cuota de mercado de AMD podrían afectar negativamente el precio de las acciones, llevándolo a $200.00 en el peor de los casos. Un cambio en la demanda o la entrada de nuevos competidores podría ser perjudicial para la empresa.\n\n**Valor esperado:** $338.00 (+11.4%) vs bajista -34.1%. Ratio 0.33x.\n\n**Sizing:** La posición se mantiene en 0.0% debido a que el potencial de crecimiento a corto plazo es limitado y el riesgo de pérdida es significativo en caso de que se presente un escenario bajista. No se justifica aumentar la posición en este momento.\n\n**Kill condition:** Una caída en el guidance de ingresos de AMD para el próximo año, indicando una desaceleración en el crecimiento de la empresa.\n\n**Proximo checkpoint:** La próxima presentación de resultados financieros de AMD el 26 de julio, donde se vigilará de cerca el guidance de ingresos y la ejecución de la empresa en el segundo trimestre.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}

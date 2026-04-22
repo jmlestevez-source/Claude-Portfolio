@@ -1,0 +1,16 @@
+{
+  "ticker": "AAPL",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-22T20:05:17.573371",
+  "price_at_thesis": 273.17,
+  "ev_12m": 308.0,
+  "expected_return_pct": 12.750302009737519,
+  "bear_downside_pct": -26.785518175495117,
+  "upside_downside_ratio": 0.47601476014760113,
+  "kill_condition": "Una caída del 10% en la cuota de mercado de Apple en el sector de los smartphones",
+  "key_catalyst": "La próxima presentación de resultados financieros de Apple, programada para el 27 de abril",
+  "thesis_text": "---\nTESIS: AAPL | CERRAR | 0.0% | 2026-04-22T20:05:17.573371\n---\n**Oportunidad:** La oportunidad de cerrar la posición en AAPL se presenta ahora debido a que el precio actual de $273.17 se encuentra cerca del valor esperado de $308.00, lo que sugiere que el potencial de crecimiento a corto plazo es limitado. Además, la proximidad de la presentación de resultados financieros de Apple puede generar volatilidad en el precio de la acción.\n\n**Caso alcista (45%):** El crecimiento sólido en los ingresos y la expansión de los márgenes de Apple, impulsados por la adopción de tecnologías emergentes como la realidad aumentada y la inteligencia artificial, pueden llevar el precio de la acción a $360.00. La empresa también puede beneficiarse de la creciente demanda de productos de alta gama y la expansión de sus servicios en línea.\n\n**Caso base (30%):** La ejecución esperada de Apple se mantendrá estable, con un crecimiento moderado en los ingresos y una postura neutral de la Fed, lo que llevará el precio de la acción a $320.00. La competencia en el mercado de la tecnología puede limitar el crecimiento de la empresa, pero la lealtad de los clientes y la calidad de los productos de Apple pueden mantener su participación de mercado.\n\n**Caso bajista (25%):** Los riesgos principales para Apple incluyen una posible caída en la demanda de productos debido a la competencia de otras marcas o a una recesión económica, lo que puede llevar el precio de la acción a $200.00. Además, cualquier cambio regulatorio que afecte a la industria de la tecnología también puede tener un impacto negativo en la empresa.\n\n**Valor esperado:** $308.00 (+12.8%) vs bajista -26.8%. Ratio 0.48x.\n\n**Sizing:** La posición se mantiene en 0.0% debido a que el potencial de crecimiento a corto plazo es limitado y la proximidad de la presentación de resultados financieros de Apple puede generar volatilidad en el precio de la acción. No se justifica aumentar la posición en este momento.\n\n**Kill condition:** Una caída del 10% en la cuota de mercado de Apple en el sector de los smartphones.\n\n**Proximo checkpoint:** La presentación de resultados financieros de Apple el 27 de abril, donde se vigilará de cerca la guía de crecimiento de la empresa y cualquier comentario sobre la competencia en el mercado de la tecnología. También se monitoreará la reacción del mercado a los resultados y cualquier ajuste en la valoración de la acción.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}

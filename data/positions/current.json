@@ -1,93 +1,86 @@
 {
+  "CRWD": {
+    "weight": 0.10077519816504232,
+    "entry_date": "2026-04-22",
+    "entry_price": 466.68,
+    "ev_12m": 592.0,
+    "kill_condition": "Una ca\u00edda en el guidance de ingresos de CRWD para el pr\u00f3ximo a\u00f1o fiscal"
+  },
   "GS": {
-    "weight": 0.0769230769231374,
+    "weight": 0.10077519816513945,
     "entry_date": "2026-04-22",
-    "entry_price": 932.6699,
-    "ev_12m": 1034.0,
-    "kill_condition": "GS stock price falls below $800.0"
-  },
-  "LLY": {
-    "weight": 0.07692307692276905,
-    "entry_date": "2026-04-22",
-    "entry_price": 918.69,
+    "entry_price": 934.92,
     "ev_12m": 1070.0,
-    "kill_condition": "LLY's stock price falls below $800.0"
+    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
   },
-  "AMZN": {
-    "weight": 0.0769230769231374,
+  "CRM": {
+    "weight": 0.10077519816522712,
     "entry_date": "2026-04-22",
-    "entry_price": 254.65,
-    "ev_12m": 317.5,
-    "kill_condition": "AMZN's quarterly revenue growth falls below 5% year-over-year"
-  },
-  "COST": {
-    "weight": 0.0769230769231374,
-    "entry_date": "2026-04-22",
-    "entry_price": 1004.5,
-    "ev_12m": 1142.5,
-    "kill_condition": "COST's quarterly revenue growth falls below 10% year-over-year"
-  },
-  "PLTR": {
-    "weight": 0.0769230769231374,
-    "entry_date": "2026-04-22",
-    "entry_price": 152.25,
-    "ev_12m": 180.5,
-    "kill_condition": "PLTR's stock price falls below $100.00"
-  },
-  "META": {
-    "weight": 0.0769230769231374,
-    "entry_date": "2026-04-22",
-    "entry_price": 675.48,
-    "ev_12m": 792.5,
-    "kill_condition": "META's stock price falls below $500.00"
-  },
-  "JPM": {
-    "weight": 0.0769230769231374,
-    "entry_date": "2026-04-22",
-    "entry_price": 312.76,
-    "ev_12m": 345.5,
-    "kill_condition": "JPM's stock price falls below $250.0"
+    "entry_price": 189.795,
+    "ev_12m": 261.0,
+    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado en un sector clave"
   },
   "NOW": {
-    "weight": 0.07692307692296409,
+    "weight": 0.10077519816522712,
     "entry_date": "2026-04-22",
-    "entry_price": 103.2501,
-    "ev_12m": 117.5,
-    "kill_condition": "A 20% decline in the stock price from current levels"
+    "entry_price": 103.15,
+    "ev_12m": 129.75,
+    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
+  },
+  "MSFT": {
+    "weight": 0.05426356791918622,
+    "entry_date": "2026-04-22",
+    "entry_price": 432.92,
+    "ev_12m": 528.5,
+    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de Azure en un trimestre"
+  },
+  "LLY": {
+    "weight": 0.07751938284747942,
+    "entry_date": "2026-04-22",
+    "entry_price": 921.465,
+    "ev_12m": 1050.0,
+    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de la empresa en un trimestre"
+  },
+  "META": {
+    "weight": 0.07751937822835828,
+    "entry_date": "2026-04-22",
+    "entry_price": 674.72,
+    "ev_12m": 782.0,
+    "kill_condition": "Una ca\u00edda en el guidance de ingresos de META para el pr\u00f3ximo a\u00f1o podr\u00eda invalidar la tesis estructural y llevar a una revisi\u00f3n a la baja de las proyecciones de crecimiento."
   },
   "MA": {
-    "weight": 0.0769230769231374,
+    "weight": 0.07751937858137282,
     "entry_date": "2026-04-22",
-    "entry_price": 509.11,
-    "ev_12m": 562.5,
-    "kill_condition": "A 20% decline in the stock price from the current level"
+    "entry_price": 510.29,
+    "ev_12m": 586.0,
+    "kill_condition": "Una ca\u00edda del 10% en los ingresos anuales o una p\u00e9rdida significativa de cuota de mercado"
   },
   "V": {
-    "weight": 0.0769230769231374,
+    "weight": 0.07751937511651513,
     "entry_date": "2026-04-22",
-    "entry_price": 310.56,
+    "entry_price": 311.24,
     "ev_12m": 352.5,
-    "kill_condition": "A recession is officially declared by the NBER"
+    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
   },
-  "AAPL": {
-    "weight": 0.0769230769231374,
+  "AMZN": {
+    "weight": 0.07751937430830233,
     "entry_date": "2026-04-22",
-    "entry_price": 272.705,
-    "ev_12m": 302.5,
-    "kill_condition": "AAPL's quarterly revenue growth falls below 5% year-over-year"
+    "entry_price": 255.36,
+    "ev_12m": 286.0,
+    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de Amazon en el comercio electr\u00f3nico en Estados Unidos durante un trimestre consecutivo"
   },
-  "AVGO": {
-    "weight": 0.07692307692297802,
+  "COST": {
+    "weight": 0.07751937813834024,
     "entry_date": "2026-04-22",
-    "entry_price": 419.92,
-    "ev_12m": 486.0,
-    "kill_condition": "AVGO's stock price falls below $350.0"
+    "entry_price": 1003.7,
+    "ev_12m": 1082.5,
+    "kill_condition": "Una ca\u00edda del 10% en los ingresos anuales de la empresa"
   },
-  "AMD": {
-    "weight": 0.0769230769230523,
+  "JPM": {
+    "weight": 0.07751937219980952,
     "entry_date": "2026-04-22",
-    "entry_price": 303.18,
-    "ev_12m": 349.0,
-    "kill_condition": "AMD's stock price falls below $220.0"
+    "entry_price": 313.17,
+    "ev_12m": 329.0,
+    "kill_condition": "Una ca\u00edda del 10% en el guidance de ingresos anuales de JPM"
   }
 }

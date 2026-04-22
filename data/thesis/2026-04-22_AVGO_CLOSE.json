@@ -1,0 +1,16 @@
+{
+  "ticker": "AVGO",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-22T20:05:21.516063",
+  "price_at_thesis": 422.65,
+  "ev_12m": 486.0,
+  "expected_return_pct": 14.98876138649001,
+  "bear_downside_pct": -29.019283094759253,
+  "upside_downside_ratio": 0.5165103954341626,
+  "kill_condition": "Una caída en el guidance trimestral de la empresa que supere el 10% respecto a las expectativas del consenso.",
+  "key_catalyst": "La próxima reunión de resultados trimestrales de la empresa, programada para el 15 de mayo",
+  "thesis_text": "---\nTESIS: AVGO | CERRAR | 0.0% | 2026-04-22T20:05:21.516063\n---\n**Oportunidad:** La oportunidad se presenta debido a la combinación de un crecimiento sólido en ingresos y margenes de la empresa, junto con una demanda creciente de tecnología de vanguardia. El contexto macro actual de crecimiento moderado y la postura neutral de la Fed también contribuyen a una valoración atractiva de la acción.\n\n**Caso alcista (45%):** La empresa sigue mostrando un crecimiento sólido en ingresos y margenes, lo que sugiere un futuro prometedor. La tendencia alcista se mantiene gracias a la demanda creciente de tecnología de vanguardia, lo que podría impulsar el precio de la acción hacia $580.00.\n\n**Caso base (30%):** El contexto macro actual de crecimiento moderado y la postura neutral de la Fed pueden mantener el precio de la acción en un rango estable. La empresa sigue siendo atractiva para los inversores a largo plazo, lo que podría mantener el precio de la acción en torno a $500.00.\n\n**Caso bajista (25%):** La competencia en el sector tecnológico es intensa y puede afectar la cuota de mercado de la empresa. Un cambio regulatorio adverso podría afectar negativamente el desempeño de la empresa, lo que podría hacer que el precio de la acción caiga hacia $300.00.\n\n**Valor esperado:** $486.00 (+15.0%) vs bajista -29.0%. Ratio 0.52x.\n\n**Sizing:** La posición se mantiene en 0.0% debido a que no se han presentado cambios significativos en la valoración de la empresa o en el contexto macro que justifiquen una modificación en la posición.\n\n**Kill condition:** Una caída en el guidance trimestral de la empresa que supere el 10% respecto a las expectativas del consenso.\n\n**Proximo checkpoint:** La próxima reunión de resultados trimestrales de la empresa, programada para el 15 de mayo, será el próximo checkpoint para evaluar el desempeño de la empresa y ajustar la posición según sea necesario. Se vigilará de cerca el guidance trimestral y la reacción del mercado a los resultados.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}

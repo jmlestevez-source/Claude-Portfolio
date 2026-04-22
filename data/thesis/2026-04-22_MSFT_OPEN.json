@@ -1,0 +1,16 @@
+{
+  "ticker": "MSFT",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.05426356791918622,
+  "timestamp": "2026-04-22T20:05:13.776393",
+  "price_at_thesis": 432.92,
+  "ev_12m": 528.5,
+  "expected_return_pct": 22.077982075210194,
+  "bear_downside_pct": -26.083341032985313,
+  "upside_downside_ratio": 0.8464399574920294,
+  "kill_condition": "Una caída del 10% en la cuota de mercado de Azure en un trimestre",
+  "key_catalyst": "La próxima reunión de resultados de la empresa el 26 de abril",
+  "thesis_text": "---\nTESIS: MSFT | ABRIR | 5.4% | 2026-04-22T20:05:13.776393\n---\n**Oportunidad:** La oportunidad de invertir en MSFT se presenta ahora debido a la expansión de sus servicios en la nube y la inteligencia artificial, lo que sugiere un crecimiento sólido en los ingresos y margenes. Además, el contexto macro actual de crecimiento moderado y la postura neutral de la Fed pueden mantener el precio de la acción estable.\n\n**Caso alcista (45%):** La empresa seguirá mostrando un crecimiento sólido en sus ingresos y margenes, impulsado por la expansión de sus servicios en la nube y la inteligencia artificial, lo que puede llevar el precio de la acción a $650.00. La adopción de Azure y la creciente demanda de soluciones de inteligencia artificial pueden ser los principales drivers de este crecimiento.\n\n**Caso base (30%):** La empresa seguirá generando ingresos y beneficios, pero sin un crecimiento explosivo, lo que puede llevar el precio de la acción a $520.00. La ejecución esperada de la empresa en términos de ingresos y margenes puede ser estable, pero sin sorpresas positivas.\n\n**Caso bajista (25%):** La competencia en el sector tecnológico sigue aumentando y la empresa puede perder cuota de mercado, lo que puede llevar el precio de la acción a $320.00. La posible subida de los tipos de interés puede afectar negativamente el valor de las acciones y la empresa puede enfrentar desafíos para mantener su crecimiento.\n\n**Valor esperado:** $528.50 (+22.1%) vs bajista -26.1%. Ratio 0.85x.\n\n**Sizing:** La inversión del 5.4% se justifica debido a la combinación de factores fundamentales y técnicos que sugieren un potencial de crecimiento significativo en la acción, pero también se considera el riesgo de pérdida en caso de que la empresa no cumpla con las expectativas.\n\n**Kill condition:** Una caída del 10% en la cuota de mercado de Azure en un trimestre\n\n**Proximo checkpoint:** La próxima reunión de resultados de la empresa el 26 de abril, donde se vigilará de cerca la ejecución de la empresa en términos de ingresos y margenes, así como cualquier comentario sobre la expansión de sus servicios en la nube y la inteligencia artificial.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene una postura neutral con tipos al 4,29% (TNX). Estamos en la fase de expansión del ciclo económico. El VIX (18,78) indica un apetito"
+}
