@@ -1,0 +1,16 @@
+{
+  "ticker": "AVGO",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.10369775372859914,
+  "timestamp": "2026-04-23T08:32:40.604812",
+  "price_at_thesis": 422.65,
+  "ev_12m": 517.2475,
+  "expected_return_pct": 22.38199455814503,
+  "bear_downside_pct": -24.999408494025783,
+  "upside_downside_ratio": 0.8953009653605906,
+  "kill_condition": "Reducción del margen de beneficio bruto por debajo del 70% en Q3 2024 combinada con un corte del guidance anual de ingresos",
+  "key_catalyst": "Earnings de Q2 2024, aproximadamente el 30 de julio de 2024",
+  "thesis_text": "---\nTESIS: AVGO | ABRIR | 10.4% | 2026-04-23T08:32:40.604812\n---\n**Oportunidad:** La oportunidad de invertir en AVGO se presenta ahora debido a que el precio actual de $422.65 es un 18.3% inferior al valor esperado de $517.25 en 12 meses, lo que sugiere un potencial de crecimiento significativo. Además, la empresa se encuentra en una posición sólida en el sector de semiconductores, con un margen de beneficio bruto del 73.2% en el último trimestre.\n\n**Caso alcista (45%):** El caso alcista se basa en la expansión del ciclo económico y el crecimiento moderado del mercado, lo que podría impulsar los ingresos y beneficios de AVGO. La empresa podría alcanzar un objetivo de $640.00 si logra un crecimiento del 25% en sus ingresos y un margen de beneficio bruto del 75% en los próximos 12 meses.\n\n**Caso base (30%):** El caso base se basa en la ejecución esperada de la empresa, con un crecimiento estable pero sin sorpresas significativas. La empresa podría alcanzar un objetivo de $500.00 si logra un crecimiento del 10% en sus ingresos y un margen de beneficio bruto del 72% en los próximos 12 meses.\n\n**Caso bajista (25%):** El caso bajista se basa en los riesgos específicos de la empresa, como una mayor competencia y una posible disminución en la demanda, lo que podría afectar negativamente sus ingresos y beneficios. La empresa podría alcanzar un objetivo de $316.99 si experimenta una caída del 20% en sus ingresos y un margen de beneficio bruto del 65% en los próximos 12 meses.\n\n**Valor esperado:** $517.25 (+22.4%) vs bajista -25.0%. Ratio 0.90x.\n\n**Sizing:** El sizing del 10.4% se basa en la relación con el ratio U/D de 0.90x y el bear case de $316.99. Considerando que el bear case implica una pérdida potencial de $105.66 por acción, el sizing del 10.4% equivale a una exposición de $44.31 por acción, lo que representa un riesgo aceptable en relación con el potencial de crecimiento.\n\n**Kill condition:** Reducción del margen de beneficio bruto por debajo del 70% en Q3 2024 combinada con un corte del guidance anual de ingresos\n\n**Proximo checkpoint:** El próximo checkpoint será el anuncio de los resultados del segundo trimestre de 2024, aproximadamente el 30 de julio de 2024, que proporcionará información actualizada sobre el desempeño de la empresa y su perspectiva para el resto del año.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene tipos al 4,75%-5,00%. Estamos en la fase de expansión del ciclo económico. El VIX (19,43) indica un apetito por el riesgo moderado."
+}

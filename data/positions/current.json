@@ -1,86 +1,79 @@
 {
-  "CRWD": {
-    "weight": 0.10077519816504232,
-    "entry_date": "2026-04-22",
-    "entry_price": 466.68,
-    "ev_12m": 592.0,
-    "kill_condition": "Una ca\u00edda en el guidance de ingresos de CRWD para el pr\u00f3ximo a\u00f1o fiscal"
-  },
-  "GS": {
-    "weight": 0.10077519816513945,
-    "entry_date": "2026-04-22",
-    "entry_price": 934.92,
-    "ev_12m": 1070.0,
-    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
-  },
-  "CRM": {
-    "weight": 0.10077519816522712,
-    "entry_date": "2026-04-22",
-    "entry_price": 189.795,
-    "ev_12m": 261.0,
-    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado en un sector clave"
-  },
-  "NOW": {
-    "weight": 0.10077519816522712,
-    "entry_date": "2026-04-22",
-    "entry_price": 103.15,
-    "ev_12m": 129.75,
-    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
-  },
-  "MSFT": {
-    "weight": 0.05426356791918622,
-    "entry_date": "2026-04-22",
-    "entry_price": 432.92,
-    "ev_12m": 528.5,
-    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de Azure en un trimestre"
-  },
-  "LLY": {
-    "weight": 0.07751938284747942,
-    "entry_date": "2026-04-22",
-    "entry_price": 921.465,
-    "ev_12m": 1050.0,
-    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de la empresa en un trimestre"
-  },
-  "META": {
-    "weight": 0.07751937822835828,
-    "entry_date": "2026-04-22",
-    "entry_price": 674.72,
-    "ev_12m": 782.0,
-    "kill_condition": "Una ca\u00edda en el guidance de ingresos de META para el pr\u00f3ximo a\u00f1o podr\u00eda invalidar la tesis estructural y llevar a una revisi\u00f3n a la baja de las proyecciones de crecimiento."
-  },
-  "MA": {
-    "weight": 0.07751937858137282,
-    "entry_date": "2026-04-22",
-    "entry_price": 510.29,
-    "ev_12m": 586.0,
-    "kill_condition": "Una ca\u00edda del 10% en los ingresos anuales o una p\u00e9rdida significativa de cuota de mercado"
+  "AVGO": {
+    "weight": 0.10369775372859914,
+    "entry_date": "2026-04-23",
+    "entry_price": 422.65,
+    "ev_12m": 517.2475,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio bruto por debajo del 70% en Q3 2024 combinada con un corte del guidance anual de ingresos"
   },
   "V": {
-    "weight": 0.07751937511651513,
-    "entry_date": "2026-04-22",
-    "entry_price": 311.24,
-    "ev_12m": 352.5,
-    "kill_condition": "Una ca\u00edda en el guidance de la empresa o una p\u00e9rdida significativa de cuota de mercado"
+    "weight": 0.10369775372835256,
+    "entry_date": "2026-04-23",
+    "entry_price": 311.29,
+    "ev_12m": 373.5,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 90% en Q3 2024 combinada con un corte del guidance anual de ingresos"
+  },
+  "META": {
+    "weight": 0.08038585590672691,
+    "entry_date": "2026-04-23",
+    "entry_price": 674.72,
+    "ev_12m": 777.1270000000001,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 75% en Q3 2024 combinada con una disminuci\u00f3n del 10% en la participaci\u00f3n de mercado de publicidad en l\u00ednea"
+  },
+  "DDOG": {
+    "weight": 0.10369774972523736,
+    "entry_date": "2026-04-23",
+    "entry_price": 132.14,
+    "ev_12m": 157.5,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 75% en Q3 2024 combinada con una disminuci\u00f3n del 10% en el crecimiento de ingresos anual"
+  },
+  "CRWD": {
+    "weight": 0.10369775372859921,
+    "entry_date": "2026-04-23",
+    "entry_price": 466.68,
+    "ev_12m": 552.035,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio neto por debajo del 20% en Q4 2024 combinada con una disminuci\u00f3n del 10% en el crecimiento de los ingresos anuales"
+  },
+  "CRM": {
+    "weight": 0.10369775372832737,
+    "entry_date": "2026-04-23",
+    "entry_price": 189.8,
+    "ev_12m": 221.9875,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 70% en Q3 2024 combinada con una disminuci\u00f3n del 10% en los ingresos anuales"
+  },
+  "MSFT": {
+    "weight": 0.056270098040151276,
+    "entry_date": "2026-04-23",
+    "entry_price": 432.92,
+    "ev_12m": 493.35,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio neto por debajo del 60% en Q4 2024 combinada con un corte del guidance anual de ingresos"
+  },
+  "NOW": {
+    "weight": 0.10369775372846805,
+    "entry_date": "2026-04-23",
+    "entry_price": 103.07,
+    "ev_12m": 116.6,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 70% en Q3 2024 combinada con una disminuci\u00f3n del 10% en los ingresos anuales"
+  },
+  "LLY": {
+    "weight": 0.08038584673658218,
+    "entry_date": "2026-04-23",
+    "entry_price": 921.48,
+    "ev_12m": 1034.925,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio neto por debajo del 25% en Q3 2024 combinada con una disminuci\u00f3n del 10% en los ingresos anuales"
   },
   "AMZN": {
-    "weight": 0.07751937430830233,
-    "entry_date": "2026-04-22",
+    "weight": 0.080385840381206,
+    "entry_date": "2026-04-23",
     "entry_price": 255.36,
-    "ev_12m": 286.0,
-    "kill_condition": "Una ca\u00edda del 10% en la cuota de mercado de Amazon en el comercio electr\u00f3nico en Estados Unidos durante un trimestre consecutivo"
+    "ev_12m": 285.794,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio neto por debajo del 4% en Q4 2024 combinada con una disminuci\u00f3n del 10% en el crecimiento de los ingresos anuales"
   },
-  "COST": {
-    "weight": 0.07751937813834024,
-    "entry_date": "2026-04-22",
-    "entry_price": 1003.7,
-    "ev_12m": 1082.5,
-    "kill_condition": "Una ca\u00edda del 10% en los ingresos anuales de la empresa"
-  },
-  "JPM": {
-    "weight": 0.07751937219980952,
-    "entry_date": "2026-04-22",
-    "entry_price": 313.17,
-    "ev_12m": 329.0,
-    "kill_condition": "Una ca\u00edda del 10% en el guidance de ingresos anuales de JPM"
+  "MA": {
+    "weight": 0.08038584056775006,
+    "entry_date": "2026-04-23",
+    "entry_price": 510.16,
+    "ev_12m": 567.48,
+    "kill_condition": "Reducci\u00f3n del margen de beneficio por debajo del 20% en Q3 2024 combinada con una disminuci\u00f3n del 10% en los ingresos anuales"
   }
 }

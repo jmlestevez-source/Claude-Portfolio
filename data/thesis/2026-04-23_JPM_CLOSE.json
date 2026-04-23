@@ -1,0 +1,16 @@
+{
+  "ticker": "JPM",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-23T08:32:52.046777",
+  "price_at_thesis": 313.02,
+  "ev_12m": 313.73900000000003,
+  "expected_return_pct": 0.22969778288928852,
+  "bear_downside_pct": -34.37160564820139,
+  "upside_downside_ratio": 0.006682777209778335,
+  "kill_condition": "Reducción del ROE por debajo del 10% en Q3 2024 combinada con corte del guidance anual de ingresos",
+  "key_catalyst": "Earnings Q2 2024 el 14 de julio de 2024",
+  "thesis_text": "---\nTESIS: JPM | CERRAR | 0.0% | 2026-04-23T08:32:52.046777\n---\n**Oportunidad:** La oportunidad de cerrar la posición en JPM se presenta debido a que el precio actual de $313.02 refleja las expectativas de crecimiento moderado, y el valor esperado de $313.74 solo representa un aumento del 0.2% en los próximos 12 meses. Además, el ratio U/D de 0.01x indica que el potencial de ganancias es limitado en comparación con el riesgo de pérdidas.\n\n**Caso alcista (40%):** El crecimiento de JPM puede impulsarse por la expansión del ciclo económico y la política monetaria de la Fed, lo que puede llevar a un aumento en la actividad económica y, por lo tanto, a un aumento en los ingresos de la empresa. El objetivo alcista sería de $395.51, lo que representaría un aumento del 26.3% con respecto al precio actual.\n\n**Caso base (30%):** La ejecución esperada de JPM se mantendrá estable, con un crecimiento moderado de los ingresos y un margen de beneficio estable. El objetivo base sería mantener el precio actual de $313.02, lo que refleja las expectativas de crecimiento moderado.\n\n**Caso bajista (30%):** Los riesgos para JPM incluyen la posible disminución de la actividad económica y la subida de los tipos de interés, lo que puede afectar negativamente a la empresa. El objetivo bajista sería de $205.43, lo que representaría una disminución del 34.4% con respecto al precio actual.\n\n**Valor esperado:** $313.74 (+0.2%) vs bajista -34.4%. Ratio 0.01x.\n\n**Sizing:** El peso de 0.0% se debe a que el ratio U/D de 0.01x indica que el potencial de ganancias es limitado en comparación con el riesgo de pérdidas. Además, el bear case de $205.43 representa una pérdida significativa, lo que justifica una posición neutral.\n\n**Kill condition:** Reducción del ROE por debajo del 10% en Q3 2024 combinada con corte del guidance anual de ingresos\n\n**Proximo checkpoint:** El próximo checkpoint será el anuncio de los resultados del segundo trimestre de 2024, que se espera que tenga lugar el 14 de julio de 2024. Este evento proporcionará información valiosa sobre el desempeño de JPM y su perspectiva para el resto del año.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene tipos al 4,75%-5,00%. Estamos en la fase de expansión del ciclo económico. El VIX (19,43) indica un apetito por el riesgo moderado."
+}

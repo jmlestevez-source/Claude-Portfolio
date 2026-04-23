@@ -1,0 +1,16 @@
+{
+  "ticker": "GS",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-23T08:32:48.227652",
+  "price_at_thesis": 934.84,
+  "ev_12m": 1023.043,
+  "expected_return_pct": 9.435090496769497,
+  "bear_downside_pct": -34.99957211929314,
+  "upside_downside_ratio": 0.2695773098199822,
+  "kill_condition": "Reducción del margen neto por debajo del 20% en Q3 2024 combinada con una disminución del 10% en los ingresos anuales",
+  "key_catalyst": "Declaración de resultados del Q2 2024, aproximadamente el 15 de julio de 2024",
+  "thesis_text": "---\nTESIS: GS | CERRAR | 0.0% | 2026-04-23T08:32:48.227652\n---\n**Oportunidad:** La oportunidad existe debido a la expansión del ciclo económico y el crecimiento moderado, lo que puede impulsar los ingresos y beneficios de la empresa. El precio actual de $934.84 ofrece un potencial de crecimiento del 9.4% hacia el valor esperado de $1023.04.\n\n**Caso alcista (40%):** La empresa puede beneficiarse de la expansión del ciclo económico y el crecimiento moderado, lo que puede impulsar sus ingresos y beneficios. La tendencia alcista en el sector financiero también puede apoyar el precio de las acciones, con un objetivo de $1023.04.\n\n**Caso base (30%):** La empresa puede mantener su precio actual debido a la estabilidad en el mercado y la falta de cambios significativos en su situación financiera. La Fed mantiene los tipos de interés en un rango estable, lo que puede reducir la volatilidad en el mercado, con un objetivo de $934.84.\n\n**Caso bajista (30%):** La empresa puede enfrentar desafíos debido a la posible disminución en el crecimiento de los ingresos y la presión sobre los márgenes. La incertidumbre en el mercado y la posible subida de los tipos de interés pueden afectar negativamente el precio de las acciones, con un objetivo de $607.65.\n\n**Valor esperado:** $1023.04 (+9.4%) vs bajista -35.0%. Ratio 0.27x.\n\n**Sizing:** El peso del 0.0% se debe a que el ratio U/D de 0.27x indica que el potencial de crecimiento es limitado en comparación con el riesgo de pérdida, y el bear case de $607.65 representa una pérdida significativa de $327.19, lo que justifica una posición neutral.\n\n**Kill condition:** Reducción del margen neto por debajo del 20% en Q3 2024 combinada con una disminución del 10% en los ingresos anuales\n\n**Proximo checkpoint:** La declaración de resultados del Q2 2024, aproximadamente el 15 de julio de 2024, será un evento clave para evaluar el desempeño de la empresa y ajustar la posición según sea necesario.\n---",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene tipos al 4,75%-5,00%. Estamos en la fase de expansión del ciclo económico. El VIX (19,43) indica un apetito por el riesgo moderado."
+}

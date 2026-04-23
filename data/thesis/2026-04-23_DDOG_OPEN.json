@@ -1,0 +1,16 @@
+{
+  "ticker": "DDOG",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.10369774972523736,
+  "timestamp": "2026-04-23T08:32:44.357196",
+  "price_at_thesis": 132.14,
+  "ev_12m": 157.5,
+  "expected_return_pct": 19.191766308460736,
+  "bear_downside_pct": -31.89041925230815,
+  "upside_downside_ratio": 0.601803512102516,
+  "kill_condition": "Reducción del margen de beneficio por debajo del 75% en Q3 2024 combinada con una disminución del 10% en el crecimiento de ingresos anual",
+  "key_catalyst": "Informe de resultados del Q2 2024, esperado para agosto de 2024",
+  "thesis_text": "---\nTESIS: DDOG | ABRIR | 10.4% | 2026-04-23T08:32:44.357196\n---\n**Oportunidad:** La oportunidad de invertir en DDOG se presenta ahora debido a su sólida posición en el mercado de monitoreo de aplicaciones y su capacidad para innovar y expandirse en nuevos sectores, con un precio actual de $132.14 y un valor esperado de $157.50 en 12 meses. La empresa tiene un estable crecimiento y una sólida base de clientes, lo que la hace atractiva para inversores que buscan crecimiento a largo plazo.\n\n**Caso alcista (45%):** El caso alcista se basa en la capacidad de DDOG para experimentar un crecimiento significativo en sus ingresos, con un aumento del 20% en los ingresos anuales y un margen de beneficio del 80%. Esto se debe a la creciente demanda de soluciones de monitoreo y seguridad en la nube, y la capacidad de la empresa para innovar y expandirse en nuevos sectores. El objetivo es alcanzar un precio de $200.00.\n\n**Caso base (30%):** El caso base se basa en la ejecución esperada de DDOG, con un crecimiento estable de los ingresos del 10% anual y un margen de beneficio del 75%. La empresa seguirá generando ingresos estables y mantendrá su posición en el mercado, pero no necesariamente experimentará un crecimiento explosivo. El objetivo es mantener el precio actual de $150.00.\n\n**Caso bajista (25%):** El caso bajista se basa en los riesgos específicos que enfrenta DDOG, como la creciente competencia en el mercado de monitoreo de aplicaciones y la posible disminución de la demanda de sus servicios. La empresa puede tener dificultades para mantener su margen de beneficio y su crecimiento de ingresos, lo que podría llevar a un precio de $90.00.\n\n**Valor esperado:** $157.50 (+19.2%) vs bajista -31.9%. Ratio 0.60x.\n\n**Sizing:** El tamaño de la inversión es del 10.4% debido a que el ratio U/D es de 0.60x, lo que indica que el potencial de pérdida es relativamente bajo en comparación con el potencial de ganancia. Además, el bear case de $90.00 representa una pérdida del 31.9% en comparación con el precio actual, lo que justifica un tamaño de inversión moderado.\n\n**Kill condition:** Reducción del margen de beneficio por debajo del 75% en Q3 2024 combinada con una disminución del 10% en el crecimiento de ingresos anual.\n\n**Proximo checkpoint:** El próximo checkpoint será el informe de resultados del Q2 2024, esperado para agosto de 2024, que proporcionará información actualizada sobre el desempeño de la empresa y su capacidad para alcanzar sus objetivos.",
+  "macro_snapshot": "El contexto macro actual es de crecimiento moderado. La Fed mantiene tipos al 4,75%-5,00%. Estamos en la fase de expansión del ciclo económico. El VIX (19,43) indica un apetito por el riesgo moderado."
+}
