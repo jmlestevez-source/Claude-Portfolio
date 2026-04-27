@@ -22,17 +22,20 @@ from src.data_fetcher import (
     fetch_macro_data,
     cache,
 )
-from src.screener import prescreening
-from src.scorer import score_batch
+from src.screener  import prescreening
+from src.scorer    import score_batch
 from src.scenarios import build_scenario
 from src.optimizer import optimize_portfolio
-from src.thesis import generate_thesis
+from src.thesis    import generate_thesis
 from src.performance import (
     compute_performance_metrics,
     update_performance,
     record_trades,
 )
-from src.email_report import generate_email_report
+from src.email_report import (
+    generate_email_report,
+    send_email_report,
+)
 
 
 # ── Config y estado ───────────────────────────────────────────────────────────
@@ -48,7 +51,7 @@ def load_current_positions() -> dict:
 
 
 def save_results(
-    result: dict,
+    result:    dict,
     scenarios: dict,
 ) -> dict:
     today = datetime.now().strftime("%Y-%m-%d")
@@ -68,7 +71,9 @@ def save_results(
     Path("data/positions").mkdir(
         parents=True, exist_ok=True
     )
-    with open("data/positions/current.json", "w") as f:
+    with open(
+        "data/positions/current.json", "w"
+    ) as f:
         json.dump(positions, f, indent=2)
 
     rebalance = {
@@ -99,12 +104,12 @@ def save_results(
     with open(rb_path, "w") as f:
         json.dump(rebalance, f, indent=2)
 
-    print("✓ Resultados guardados")
+    print("  ✓ Resultados guardados")
     return positions
 
 
 def get_macro_context(macro_data: dict) -> str:
-    """Genera texto de contexto macro con datos reales."""
+    """Genera contexto macro con datos reales."""
     market_lines = []
     for label, d in macro_data.items():
         price = d.get("price",  0)
@@ -171,8 +176,8 @@ def _generate_commentary(
 
     added_str   = str(added)
     dropped_str = str(dropped)
-    to_str      = result["turnover_used"]
-    ev_str      = result["expected_return"]
+    to_val      = result["turnover_used"]
+    ev_val      = result["expected_return"]
     macro_s     = macro_context[:200]
     port_s      = f"{port_ret:+.2f}%"
     spy_s       = f"{spy_ret:+.2f}%"
@@ -183,8 +188,8 @@ def _generate_commentary(
         "Máximo 300 palabras. Primera persona.\n\n"
         f"Portfolio:\n{lines}\n\n"
         f"Cambios: +{added_str} -{dropped_str}\n"
-        f"Turnover: {to_str:.1%}\n"
-        f"EV 12M: {ev_str:.1%}\n\n"
+        f"Turnover: {to_val:.1%}\n"
+        f"EV 12M: {ev_val:.1%}\n\n"
         f"Performance real:\n"
         f"  Portfolio: {port_s}\n"
         f"  SPY mismo periodo: {spy_s}\n"
@@ -225,7 +230,7 @@ def run_rebalance(
     )
     print(f"{'='*60}\n")
 
-    # ── Verificar credenciales ────────────────────────────
+    # Verificar credenciales LLM
     groq_key   = os.getenv("GROQ_API_KEY")
     gemini_key = os.getenv("GEMINI_API_KEY")
 
@@ -284,10 +289,6 @@ def run_rebalance(
     print("PASO 3: Histórico de precios (batch)")
     print("=" * 50)
 
-    prescreen_n = config.get(
-        "screening", {}
-    ).get("prescreen_top_n", 100)
-
     price_history = fetch_price_history(
         universe_tickers,
         period="1y",
@@ -311,17 +312,21 @@ def run_rebalance(
     print("PASO 5: Pre-filtro cuantitativo")
     print("=" * 50)
 
+    prescreen_n = config.get(
+        "screening", {}
+    ).get("prescreen_top_n", 100)
+
     candidates, no_data_tickers = prescreening(
         fundamentals,
         price_history,
         top_n=prescreen_n,
     )
 
-    n_candidates = len(candidates)
-    n_no_data    = len(no_data_tickers)
+    n_cand   = len(candidates)
+    n_nodata = len(no_data_tickers)
     print(
-        f"  {n_candidates} candidatos | "
-        f"{n_no_data} sin datos\n"
+        f"  {n_cand} candidatos | "
+        f"{n_nodata} sin datos\n"
     )
 
     # ── PASO 6: Scoring LLM en batches ────────────────────
@@ -363,16 +368,14 @@ def run_rebalance(
     print("PASO 7: Construyendo escenarios")
     print("=" * 50)
 
-    scenarios: dict = {}
-    total_sc        = len(top_scored)
+    scenarios:  dict = {}
+    total_sc         = len(top_scored)
 
     for i, s in enumerate(top_scored):
-        ticker = s["ticker"]
-        print(f"  [{i+1}/{total_sc}] {ticker}...")
-
+        ticker    = s["ticker"]
         fund_data = fundamentals.get(ticker, {})
         merged    = {**fund_data, **s}
-
+        print(f"  [{i+1}/{total_sc}] {ticker}...")
         scenarios[ticker] = build_scenario(
             ticker,
             merged,
@@ -408,15 +411,15 @@ def run_rebalance(
     )
 
     # ── PASO 8b: Enriquecimiento PortfolioLabs ────────────
-    use_pl = os.getenv(
-        "USE_PORTFOLIOLABS", "false"
-    ).lower() == "true"
+    use_pl = (
+        os.getenv("USE_PORTFOLIOLABS", "false")
+        .lower() == "true"
+    )
 
     if use_pl:
         print("=" * 50)
         print("PASO 8b: Enriquecimiento PortfolioLabs")
         print("=" * 50)
-
         try:
             from src.portfoliolabs import (
                 enrich_with_portfoliolabs,
@@ -433,10 +436,9 @@ def run_rebalance(
                     "_pl_divergences", {}
                 )
                 if divs:
-                    div_keys = list(divs.keys())
                     print(
                         f"  ⚠ {t} divergencias: "
-                        f"{div_keys}"
+                        f"{list(divs.keys())}"
                     )
         except Exception as e:
             print(
@@ -484,12 +486,11 @@ def run_rebalance(
     )
     update_performance(result, positions, scenarios)
 
-    port_ret = perf_metrics.get(
+    port_ret   = perf_metrics.get(
         "portfolio_return_pct", 0.0
     )
-    spy_ret  = perf_metrics.get("spy_return_pct", 0.0)
-    alpha    = perf_metrics.get("alpha_pct",       0.0)
-
+    spy_ret    = perf_metrics.get("spy_return_pct", 0.0)
+    alpha      = perf_metrics.get("alpha_pct",       0.0)
     port_sign  = "+" if port_ret >= 0 else ""
     spy_sign   = "+" if spy_ret  >= 0 else ""
     alpha_sign = "+" if alpha    >= 0 else ""
@@ -509,8 +510,8 @@ def run_rebalance(
     min_change = config["turnover"]["min_position_change"]
 
     for ticker, weight in result["weights"].items():
-        old_w = current_weights.get(ticker, 0.0)
-        diff  = weight - old_w
+        old_w  = current_weights.get(ticker, 0.0)
+        diff   = weight - old_w
 
         if ticker in result["added_names"]:
             action = "OPEN"
@@ -530,7 +531,6 @@ def run_rebalance(
                 macro_context,
             )
             all_thesis.append(thesis)
-
             accion_map = {
                 "OPEN": "ABRIR",
                 "ADD":  "AÑADIR",
@@ -565,7 +565,6 @@ def run_rebalance(
     )
     result["commentary"] = summary
 
-    # Actualizar fichero de rebalanceo con commentary
     today   = datetime.now().strftime("%Y-%m-%d")
     rb_file = Path(
         f"data/rebalances/{today}_rebalance.json"
@@ -586,7 +585,7 @@ def run_rebalance(
 
     # ── PASO 14: Email report ─────────────────────────────
     print("=" * 50)
-    print("PASO 14: Generando email report")
+    print("PASO 14: Generando y enviando email report")
     print("=" * 50)
 
     generate_email_report(
@@ -598,6 +597,13 @@ def run_rebalance(
         no_data_tickers = no_data_tickers,
         new_trades      = new_trades,
     )
+
+    email_sent = send_email_report()
+    if not email_sent:
+        print(
+            "  El report está guardado en "
+            "data/email_report.json"
+        )
     print()
 
     # ── Resumen final ─────────────────────────────────────
@@ -620,7 +626,6 @@ def run_rebalance(
         print(f"   {model}: {count}")
 
     print(f"\n{summary}\n")
-
     return result
 
 
