@@ -266,6 +266,38 @@ def run_rebalance(force_universe_update: bool = False):
         f"EV {result['expected_return']:.1%}\n"
     )
 
+    # En rebalance.py, después del PASO 8 (optimización),
+# añadir este bloque:
+
+# ── PASO 8b: Enriquecimiento PortfolioLabs ────────────
+use_portfoliolabs = os.getenv(
+    "USE_PORTFOLIOLABS", "false"
+).lower() == "true"
+
+if use_portfoliolabs:
+    print("🔍 PASO 8b: Enriquecimiento PortfolioLabs")
+    from src.portfoliolabs import enrich_with_portfoliolabs
+
+    portfolio_tickers = list(result["weights"].keys())
+    fundamentals = enrich_with_portfoliolabs(
+        portfolio_tickers,
+        fundamentals,
+    )
+
+    # Mostrar divergencias en consola
+    for t in portfolio_tickers:
+        divs = fundamentals.get(t, {}).get(
+            "_pl_divergences", {}
+        )
+        if divs:
+            print(f"  ⚠ {t}: {list(divs.keys())}")
+else:
+    print(
+        "  (PortfolioLabs desactivado. "
+        "Activar con USE_PORTFOLIOLABS=true)"
+    )
+print()
+
     # ── PASO 9: Operaciones y P&L ─────────────────────────
     print("💰 PASO 9: Registrando operaciones")
     new_trades = record_trades(
