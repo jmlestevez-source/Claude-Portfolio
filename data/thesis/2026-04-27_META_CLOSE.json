@@ -1,0 +1,16 @@
+{
+  "ticker": "META",
+  "action": "CLOSE",
+  "accion": "CERRAR",
+  "weight": 0.0,
+  "timestamp": "2026-04-27T09:16:06.287204",
+  "price_at_thesis": 675.05,
+  "ev_12m": 744.145,
+  "expected_return_pct": 10.23553810828828,
+  "bear_downside_pct": -35.00037034293756,
+  "upside_downside_ratio": 0.29244085156812133,
+  "kill_condition": "Reducción del margen de beneficio por debajo del 75% en Q2 2025 combinada con una caída del 10% en el crecimiento de los ingresos anuales",
+  "key_catalyst": "Informe de resultados financieros de Q2 2025, esperado para finales de julio de 2025",
+  "thesis_text": "---\nTESIS: META | CERRAR | 0.0% | 2026-04-27T09:16:06.287204\n---\n**Oportunidad:** La empresa META presenta una oportunidad de inversión atractiva debido a su sólida posición en el mercado de la publicidad en línea, con un precio actual de $675.05 y un valor esperado de $744.14 en 12 meses. La relación entre el caso alcista y el caso bajista, con un ratio U/D de 0.29x, sugiere que el potencial de crecimiento es mayor que el riesgo de caída.\n\n**Caso alcista (40%):** La empresa META puede experimentar un crecimiento significativo en sus ingresos gracias a su capacidad para innovar en nuevos productos y servicios, con un objetivo de alcanzar $1024.99. Esto se debe a su margen de beneficio alto, que le permite invertir en investigación y desarrollo para mantener su ventaja competitiva, con un crecimiento anual del 15% en los ingresos.\n\n**Caso base (30%):** La empresa META puede mantener su valor actual gracias a su sólida base de usuarios y su capacidad para generar ingresos a través de la publicidad en línea, con un objetivo de mantener el precio actual de $675.05. La empresa puede seguir generando ingresos estables, con un crecimiento anual del 5% en los ingresos.\n\n**Caso bajista (30%):** La empresa META puede experimentar una caída en su valor debido a la creciente competencia en el mercado de la publicidad en línea y la regulación gubernamental sobre la privacidad de los datos, con un objetivo de $438.78. La dependencia de la empresa en la publicidad en línea puede hacer que sea vulnerable a los cambios en el comportamiento de los consumidores, con una caída del 10% en el crecimiento de los ingresos anuales.\n\n**Valor esperado:** $744.14 (+10.2%) vs bajista -35.0%. Ratio 0.29x.\n\n**Sizing:** El peso de 0.0% se debe a que el ratio U/D de 0.29x sugiere que el potencial de crecimiento es mayor que el riesgo de caída, pero el bear case de $438.78 representa una pérdida significativa en dólares absolutos, lo que justifica una posición más conservadora.\n\n**Kill condition:** Reducción del margen de beneficio por debajo del 75% en Q2 2025 combinada con una caída del 10% en el crecimiento de los ingresos anuales\n\n**Proximo checkpoint:** El informe de resultados financieros de Q2 2025, esperado para finales de julio de 2025, será un evento clave para evaluar el desempeño de la empresa y ajustar la posición según sea necesario.",
+  "macro_snapshot": "El contexto macro actual es favorable para renta variable. La Fed mantiene tipos altos (4.31% TNX), en una fase de ciclo económico maduro. El VIX (19.08) indica un apetito por el riesgo moderado. Sect"
+}

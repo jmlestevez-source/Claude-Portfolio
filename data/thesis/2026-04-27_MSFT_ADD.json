@@ -1,0 +1,16 @@
+{
+  "ticker": "MSFT",
+  "action": "ADD",
+  "accion": "ANADIR",
+  "weight": 0.10063097189116349,
+  "timestamp": "2026-04-27T09:15:58.389351",
+  "price_at_thesis": 424.6,
+  "ev_12m": 504.0,
+  "expected_return_pct": 18.69995289684408,
+  "bear_downside_pct": -29.345266132830904,
+  "upside_downside_ratio": 0.6372391653290527,
+  "kill_condition": "Reducción del margen de beneficio bruto por debajo del 65% en Q3 2024 combinada con una revisión a la baja del guidance anual de ingresos",
+  "key_catalyst": "Informe de resultados del Q2 2024 de Microsoft, esperado para finales de julio de 2024",
+  "thesis_text": "---\nTESIS: MSFT | ANADIR | 10.1% | 2026-04-27T09:15:58.389351\n---\n**Oportunidad:** La empresa sigue mostrando un crecimiento sólido en sus ingresos y margenes, con un precio actual de $424.60 que refleja un potencial alcista. La adopción de tecnologías en la nube y la expansión de sus servicios de inteligencia artificial pueden impulsar el crecimiento, con un valor esperado de $504.00 en 12 meses.\n\n**Caso alcista (45%):** La empresa puede alcanzar un crecimiento del 20% en sus ingresos anuales, con un margen de beneficio bruto del 70%, lo que llevaría el precio de la acción a $620.00. La adopción de tecnologías en la nube y la expansión de sus servicios de inteligencia artificial pueden impulsar el crecimiento, con un aumento del 30% en la demanda de sus productos y servicios.\n\n**Caso base (30%):** La empresa puede mantener un crecimiento estable del 10% en sus ingresos anuales, con un margen de beneficio bruto del 67%, lo que llevaría el precio de la acción a $500.00. La competencia en el sector tecnológico es intensa, pero la empresa puede mantener su posición en el mercado gracias a su cartera de productos y servicios diversificados.\n\n**Caso bajista (25%):** La empresa puede enfrentar una reducción del 15% en sus ingresos anuales, con un margen de beneficio bruto del 60%, lo que llevaría el precio de la acción a $300.00. La competencia en el sector de la nube es cada vez más intensa, y una posible reducción en la demanda de sus productos y servicios puede afectar negativamente los ingresos.\n\n**Valor esperado:** $504.00 (+18.7%) vs bajista -29.3%. Ratio 0.64x.\n\n**Sizing:** El peso del 10.1% se debe a que el ratio U/D de 0.64x indica que el potencial de ganancia es mayor que el potencial de pérdida, y el bear case de $300.00 representa una pérdida absoluta de $124.60 por acción, lo que equivale a un 29.3% del precio actual. Considerando el potencial de crecimiento y el riesgo, el peso del 10.1% es adecuado para aprovechar el potencial alcista de la empresa.\n\n**Kill condition:** Reducción del margen de beneficio bruto por debajo del 65% en Q3 2024 combinada con una revisión a la baja del guidance anual de ingresos\n\n**Proximo checkpoint:** El informe de resultados del Q2 2024 de Microsoft, esperado para finales de julio de 2024, será un evento clave para evaluar el desempeño de la empresa y su potencial de crecimiento.",
+  "macro_snapshot": "El contexto macro actual es favorable para renta variable. La Fed mantiene tipos altos (4.31% TNX), en una fase de ciclo económico maduro. El VIX (19.08) indica un apetito por el riesgo moderado. Sect"
+}

@@ -1,0 +1,16 @@
+{
+  "ticker": "NET",
+  "action": "OPEN",
+  "accion": "ABRIR",
+  "weight": 0.05290406152497513,
+  "timestamp": "2026-04-27T09:16:02.612681",
+  "price_at_thesis": 207.07,
+  "ev_12m": 235.0,
+  "expected_return_pct": 13.488192398705756,
+  "bear_downside_pct": -27.56072825614526,
+  "upside_downside_ratio": 0.4893989837042231,
+  "kill_condition": "Reducción del margen neto por debajo del 70% en Q3 2024 combinada con un corte del guidance anual de ingresos",
+  "key_catalyst": "Earnings Q2 2024 en julio de 2024",
+  "thesis_text": "---\nTESIS: NET | ABRIR | 5.3% | 2026-04-27T09:16:02.612681\n---\n**Oportunidad:** La empresa NET se encuentra en un contexto macro favorable para renta variable, con la Fed manteniendo tipos altos (4.31% TNX) en una fase de ciclo económico maduro. El precio actual de $207.07 ofrece una oportunidad de compra con un valor esperado de $235.00 en 12 meses, lo que representa un aumento del 13.5%.\n\n**Caso alcista (40%):** La empresa puede beneficiarse del crecimiento de ingresos acelerado, con un aumento del 15% en los ingresos anuales, y una expansión de margenes del 20%, lo que impulsaría el precio de las acciones hacia $310.00.\n\n**Caso base (30%):** La empresa puede mantener su tendencia actual y seguir creciendo a un ritmo constante, con un aumento del 5% en los ingresos anuales y una expansión de margenes del 10%, lo que mantendría el precio de las acciones estable en $220.00.\n\n**Caso bajista (30%):** La empresa puede enfrentar desafíos en su crecimiento de ingresos, con un aumento del 2% en los ingresos anuales, y una expansión de margenes del 5%, lo que haría que el precio de las acciones disminuya hacia $150.00.\n\n**Valor esperado:** $235.00 (+13.5%) vs bajista -27.6%. Ratio 0.49x.\n\n**Sizing:** El peso del 5.3% se debe a que el ratio U/D de 0.49x indica que el potencial de pérdida es relativamente bajo en comparación con el potencial de ganancia, y el bear case de $150.00 representa una pérdida absoluta de $57.07 por acción, lo que justifica un tamaño de posición moderado.\n\n**Kill condition:** Reducción del margen neto por debajo del 70% en Q3 2024 combinada con un corte del guidance anual de ingresos\n\n**Proximo checkpoint:** El próximo checkpoint será el anuncio de los resultados del segundo trimestre de 2024 (Earnings Q2 2024) en julio de 2024, que proporcionará información actualizada sobre el desempeño de la empresa y su perspectiva para el resto del año.",
+  "macro_snapshot": "El contexto macro actual es favorable para renta variable. La Fed mantiene tipos altos (4.31% TNX), en una fase de ciclo económico maduro. El VIX (19.08) indica un apetito por el riesgo moderado. Sect"
+}
