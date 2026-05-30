@@ -43,7 +43,7 @@
     "weight_before": 0,
     "weight_after": 0.1199999999998352,
     "ev_12m": 211.711,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -219,6 +219,56 @@
     "exit_price": 54.49,
     "pnl_pct": 10.77,
     "pnl_days": 12,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-05-30",
+    "ticker": "EBAY",
+    "action": "OPEN",
+    "price_at_trade": 109.27,
+    "weight_before": 0,
+    "weight_after": 0.1199999999999978,
+    "ev_12m": 141.4,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-05-30",
+    "ticker": "AVGO",
+    "action": "OPEN",
+    "price_at_trade": 446.77,
+    "weight_before": 0,
+    "weight_after": 0.060000009284388985,
+    "ev_12m": 540.947,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-05-30",
+    "ticker": "JHG",
+    "action": "TRIM",
+    "price_at_trade": 51.71,
+    "weight_before": 0.0999999862552178,
+    "weight_after": 0.040000003170582527,
+    "ev_12m": 59.031,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-05-30",
+    "ticker": "ANET",
+    "action": "CLOSE",
+    "price_at_trade": 159.47,
+    "weight_before": 0.1200000000000001,
+    "weight_after": 0,
+    "entry_price": 174.52,
+    "entry_date": "2026-05-04",
+    "exit_price": 159.47,
+    "pnl_pct": -8.62,
+    "pnl_days": 26,
     "status": "CLOSED"
   }
 ]

@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-05-30T10:00:29.467237",
+  "portfolio": {
+    "EBAY": 0.1199999999999978,
+    "SNDK": 0.11999999999999804,
+    "AVGO": 0.060000009284388985,
+    "ZM": 0.11999999999999805,
+    "NEM": 0.1199999999999984,
+    "AMZN": 0.11999999999999858,
+    "ADI": 0.05999998522196019,
+    "EOG": 0.12000000000000004,
+    "GOOGL": 0.060000006902152965,
+    "TPL": 0.059999995420924324,
+    "JHG": 0.040000003170582527
+  },
+  "changes": {
+    "added": [
+      "EBAY",
+      "AVGO"
+    ],
+    "dropped": [
+      "ANET"
+    ],
+    "turnover": 0.18000000928438678
+  },
+  "metrics": {
+    "expected_return": 0.2034546945358669,
+    "risk_score": 0.3003611092537222,
+    "risk_adjusted_return": 0.6751192781301257
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes en mi portfolio para mantener la exposici\u00f3n \u00f3ptima a los mercados. Los cambios incluyen:\n\n* **Compras**: EBAY y AVGO, con el objetivo de aprovechar su potencial de crecimiento en el corto plazo.\n* **Ventas**: ANET, debido a su desempe\u00f1o inferior a mis expectativas.\n\nEl **turnover** de esta semana es del 18.0%, lo que indica un movimiento significativo en mi portfolio. La **EV 12M** se mantiene en 20.3%, lo que sugiere que mi portfolio sigue siendo atractivo en t\u00e9rminos de valoraci\u00f3n.\n\nEn cuanto a la **performance**, mi portfolio ha subido un 2.26% esta semana, lo que es inferior al aumento del 5.27% del SPY. El **alpha** es de -3.01%, lo que indica que mi estrategia no ha sido tan efectiva como la del mercado en general.\n\n**Estructura**:\n\n1. **Macro**: La tendencia alcista del SPY y QQQ, junto con la disminuci\u00f3n del VIX, sugiere un entorno de menor riesgo.\n2. **Compras/ventas**: He comprado EBAY y AVGO, y vendido ANET.\n3. **Mantenidas**: Las posiciones en EOG, AMZN, NEM, ZM, SNDK, GOOGL, TPL, ADI y JHG se mantienen sin cambios.\n4. **Performance vs SPY**: Mi portfolio ha subido menos que el SPY esta semana.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el entorno macro y ajustar\u00e9 mi estrategia seg\u00fan sea necesario.\n\n**Conclusi\u00f3n**: No es consejo de inversi\u00f3n, es como estoy gestionando"
+}
