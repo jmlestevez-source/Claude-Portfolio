@@ -91,7 +91,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000000100015,
     "ev_12m": 327.0,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -179,7 +179,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000000000008,
     "ev_12m": 1780.0,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -269,6 +269,82 @@
     "exit_price": 159.47,
     "pnl_pct": -8.62,
     "pnl_days": 26,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "TPL",
+    "action": "ADD",
+    "price_at_trade": 389.79,
+    "weight_before": 0.059999995420924324,
+    "weight_after": 0.12368741352825229,
+    "ev_12m": 468.0615,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "GOOGL",
+    "action": "ADD",
+    "price_at_trade": 368.53,
+    "weight_before": 0.060000006902152965,
+    "weight_after": 0.12047702212021387,
+    "ev_12m": 434.439,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "INCY",
+    "action": "OPEN",
+    "price_at_trade": 102.38,
+    "weight_before": 0,
+    "weight_after": 0.06849290138266158,
+    "ev_12m": 119.75,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "JHG",
+    "action": "ADD",
+    "price_at_trade": 51.76,
+    "weight_before": 0.040000003170582527,
+    "weight_after": 0.06564527771819743,
+    "ev_12m": 56.16300000000001,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "SNDK",
+    "action": "CLOSE",
+    "price_at_trade": 1559.32,
+    "weight_before": 0.11999999999999804,
+    "weight_after": 0,
+    "entry_price": 1407.61,
+    "entry_date": "2026-05-16",
+    "exit_price": 1559.32,
+    "pnl_pct": 10.78,
+    "pnl_days": 21,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-06",
+    "ticker": "AMZN",
+    "action": "CLOSE",
+    "price_at_trade": 246.03,
+    "weight_before": 0.11999999999999858,
+    "weight_after": 0,
+    "entry_price": 271.445,
+    "entry_date": "2026-05-04",
+    "exit_price": 246.03,
+    "pnl_pct": -9.36,
+    "pnl_days": 33,
     "status": "CLOSED"
   }
 ]

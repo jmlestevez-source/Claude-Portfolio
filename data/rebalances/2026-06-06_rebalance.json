@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-06-06T10:02:47.374486",
+  "portfolio": {
+    "TPL": 0.12368741352825229,
+    "GOOGL": 0.12047702212021387,
+    "INCY": 0.06849290138266158,
+    "ZM": 0.12368741344959219,
+    "EOG": 0.12368741353098375,
+    "EBAY": 0.12368741353100193,
+    "AVGO": 0.061844913930615884,
+    "JHG": 0.06564527771819743,
+    "ADI": 0.06510281727810269,
+    "NEM": 0.12368741353037832
+  },
+  "changes": {
+    "added": [
+      "INCY"
+    ],
+    "dropped": [
+      "SNDK",
+      "AMZN"
+    ],
+    "turnover": 0.2399999999999966
+  },
+  "metrics": {
+    "expected_return": 0.12014339194989908,
+    "risk_score": 0.3011871991624609,
+    "risk_adjusted_return": 0.39757935572018716
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn este rebalanceo semanal, he realizado ajustes en mi portfolio para mantener la exposici\u00f3n \u00f3ptima en un contexto macro desafiante. La desaceleraci\u00f3n econ\u00f3mica y la pol\u00edtica monetaria restrictiva sugieren un entorno de inversi\u00f3n m\u00e1s conservador.\n\n**Estructura del Rebalanceo**\n\n1. **Macro**: La desaceleraci\u00f3n econ\u00f3mica y la subida del TNX indican un entorno de inversi\u00f3n m\u00e1s desafiante.\n2. **Compras/ventas**: He aumentado la exposici\u00f3n a INCY, una acci\u00f3n con un perfil de crecimiento s\u00f3lido en un sector en expansi\u00f3n.\n3. **Mantenidas**: Las acciones EBAY, EOG, NEM, TPL, ZM, GOOGL, JHG, ADI y AVGO se mantienen en el portfolio debido a su solidez fundamental y potencial de crecimiento.\n4. **Performance vs SPY**: El portfolio ha registrado una p\u00e9rdida del -2.16% en comparaci\u00f3n con el SPY, que ha subido un 2.54%. El alpha es de -4.70%, lo que indica un desempe\u00f1o inferior al mercado.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el contexto macro y ajustar\u00e9 el portfolio seg\u00fan sea necesario para mantener la exposici\u00f3n \u00f3ptima.\n\n**Conclusi\u00f3n**\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital. El objetivo es mantener una exposici\u00f3n diversificada y equilibrada en un entorno de inversi\u00f3n desafiante. Estar\u00e9 monitoreando de cerca el mercado y ajustando el portfolio seg\u00fan sea necesario para maximizar el retorno y minimizar el riesgo."
+}
