@@ -79,7 +79,7 @@
     "weight_before": 0,
     "weight_after": 0.1200000000005543,
     "ev_12m": 62.234,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -139,7 +139,7 @@
     "weight_before": 0.1200000000005543,
     "weight_after": 0.10000000000083134,
     "ev_12m": 59.044999999999995,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -229,7 +229,7 @@
     "weight_before": 0,
     "weight_after": 0.1199999999999978,
     "ev_12m": 141.4,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -253,7 +253,7 @@
     "weight_before": 0.0999999862552178,
     "weight_after": 0.040000003170582527,
     "ev_12m": 59.031,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -315,7 +315,7 @@
     "weight_before": 0.040000003170582527,
     "weight_after": 0.06564527771819743,
     "ev_12m": 56.16300000000001,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -345,6 +345,58 @@
     "exit_price": 246.03,
     "pnl_pct": -9.36,
     "pnl_days": 33,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-13",
+    "ticker": "APH",
+    "action": "OPEN",
+    "price_at_trade": 153.8,
+    "weight_before": 0,
+    "weight_after": 0.12348814371993418,
+    "ev_12m": 188.455,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-13",
+    "ticker": "TIGO",
+    "action": "OPEN",
+    "price_at_trade": 93.77,
+    "weight_before": 0,
+    "weight_after": 0.05794947280774262,
+    "ev_12m": 114.1525,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-13",
+    "ticker": "EBAY",
+    "action": "CLOSE",
+    "price_at_trade": 108.61,
+    "weight_before": 0.12368741353100193,
+    "weight_after": 0,
+    "entry_price": 109.27,
+    "entry_date": "2026-05-30",
+    "exit_price": 108.61,
+    "pnl_pct": -0.6,
+    "pnl_days": 14,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-13",
+    "ticker": "JHG",
+    "action": "CLOSE",
+    "price_at_trade": 51.84,
+    "weight_before": 0.06564527771819743,
+    "weight_after": 0,
+    "entry_price": 51.65945962980797,
+    "entry_date": "2026-05-04",
+    "exit_price": 51.84,
+    "pnl_pct": 0.35,
+    "pnl_days": 40,
     "status": "CLOSED"
   }
 ]

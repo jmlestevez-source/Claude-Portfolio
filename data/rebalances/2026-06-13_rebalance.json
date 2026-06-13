@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-06-13T10:31:14.191901",
+  "portfolio": {
+    "NEM": 0.12348814371993536,
+    "TPL": 0.12348814371993544,
+    "APH": 0.12348814371993418,
+    "TIGO": 0.05794947280774262,
+    "GOOGL": 0.12348814371993544,
+    "ZM": 0.1234881437199331,
+    "ADI": 0.06699521201944196,
+    "INCY": 0.07048384328862589,
+    "EOG": 0.1234881437199351,
+    "AVGO": 0.06364260956458088
+  },
+  "changes": {
+    "added": [
+      "APH",
+      "TIGO"
+    ],
+    "dropped": [
+      "EBAY",
+      "JHG"
+    ],
+    "turnover": 0.19012977040866696
+  },
+  "metrics": {
+    "expected_return": 0.21028744290770118,
+    "risk_score": 0.3008335368008387,
+    "risk_adjusted_return": 0.6967000590343838
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes en mi portfolio para mantener la diversificaci\u00f3n y aprovechar oportunidades de crecimiento. He agregado **APH** y **TIGO** al portfolio, mientras que he eliminado **EBAY** y **JHG**.\n\n**Estructura del Portfolio**\n\n1. **Macro**: La tendencia alcista moderada se mantiene, con la Fed manteniendo los tipos bajos (TNX en 4.49%) y el VIX en 17.68. Esto sugiere que la expansi\u00f3n econ\u00f3mica contin\u00faa.\n2. **Compras/ventas**: He comprado **APH** y **TIGO**, y vendido **EBAY** y **JHG**.\n3. **Mantenidas**: Las posiciones en **TPL**, **GOOGL**, **NEM**, **EOG**, **ZM**, **INCY**, **ADI**, **AVGO** se mantienen sin cambios.\n4. **Performance vs SPY**: El portfolio ha perdido -3.18% en la semana, mientras que el SPY ha ganado +3.20%. El alpha es -6.38%.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en la tendencia macro y ajustar\u00e9 el portfolio seg\u00fan sea necesario.\n\n**Conclusi\u00f3n**\n\nEl portfolio ha tenido un desempe\u00f1o negativo en la semana, pero estoy confiado en la estrategia de diversificaci\u00f3n y selecci\u00f3n de activos. No es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital."
+}
