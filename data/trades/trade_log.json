@@ -115,7 +115,7 @@
     "weight_before": 0,
     "weight_after": 0.11999999999999751,
     "ev_12m": 171.5,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -397,6 +397,56 @@
     "exit_price": 51.84,
     "pnl_pct": 0.35,
     "pnl_days": 40,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-20",
+    "ticker": "RPRX",
+    "action": "OPEN",
+    "price_at_trade": 52.96,
+    "weight_before": 0,
+    "weight_after": 0.12000000000006855,
+    "ev_12m": 68.16749999999999,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-20",
+    "ticker": "ADI",
+    "action": "ADD",
+    "price_at_trade": 434.46,
+    "weight_before": 0.06699521201944196,
+    "weight_after": 0.12000000000006865,
+    "ev_12m": 557.7585,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-20",
+    "ticker": "APH",
+    "action": "TRIM",
+    "price_at_trade": 163.96,
+    "weight_before": 0.12348814371993418,
+    "weight_after": 0.08442000746482907,
+    "ev_12m": 186.416,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-20",
+    "ticker": "EOG",
+    "action": "CLOSE",
+    "price_at_trade": 129.98,
+    "weight_before": 0.1234881437199351,
+    "weight_after": 0,
+    "entry_price": 130.03,
+    "entry_date": "2026-05-10",
+    "exit_price": 129.98,
+    "pnl_pct": -0.04,
+    "pnl_days": 41,
     "status": "CLOSED"
   }
 ]

@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-06-20T10:35:45.521343",
+  "portfolio": {
+    "NEM": 0.12000000000006866,
+    "RPRX": 0.12000000000006855,
+    "ADI": 0.12000000000006865,
+    "GOOGL": 0.12000000000006865,
+    "INCY": 0.07399065658333881,
+    "AVGO": 0.06364286456888396,
+    "TPL": 0.12000000000006866,
+    "ZM": 0.12000000000006864,
+    "TIGO": 0.057946471382536426,
+    "APH": 0.08442000746482907
+  },
+  "changes": {
+    "added": [
+      "RPRX"
+    ],
+    "dropped": [
+      "EOG"
+    ],
+    "turnover": 0.17651185627971122
+  },
+  "metrics": {
+    "expected_return": 0.2489047538816225,
+    "risk_score": 0.3004191992196365,
+    "risk_adjusted_return": 0.8257760438818362
+  },
+  "commentary": "**Rebalanceo Semanal**\n\n**1. Macro**: El mercado muestra una tendencia alcista, con el SPY subiendo un 0.9% en los \u00faltimos 5 d\u00edas y el QQQ un 2.7%. La Fed mantiene los tipos de inter\u00e9s bajos, con el TNX en 4.49%.\n\n**2. Compras/ventas**: He agregado RPRX al portfolio y eliminado EOG, lo que ha generado un turnover del 17.7%. La valoraci\u00f3n de 12 meses (EV 12M) es del 24.9%.\n\n**3. Mantenidas**: Las posiciones en NEM, TPL, ADI, GOOGL, ZM, APH, INCY, AVGO y TIGO se mantienen sin cambios.\n\n**4. Performance vs SPY**: El portfolio ha ca\u00eddo un 4.68% en comparaci\u00f3n con el SPY, que ha subido un 4.16%. El alpha es de -8.84%.\n\n**5. Vigilar**: Debo vigilar la evoluci\u00f3n del mercado y ajustar el portfolio seg\u00fan sea necesario para mejorar su desempe\u00f1o.\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital."
+}
