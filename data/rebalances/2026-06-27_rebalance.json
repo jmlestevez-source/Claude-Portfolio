@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-06-27T10:06:23.907294",
+  "portfolio": {
+    "GOOGL": 0.12493705504531023,
+    "ZM": 0.1249370550453102,
+    "ADI": 0.12493705498012947,
+    "IRM": 0.10708161490136406,
+    "APH": 0.12493705328138108,
+    "RPRX": 0.12493705497279407,
+    "AVGO": 0.06626126729186815,
+    "TPL": 0.12493705503241878,
+    "INCY": 0.07703478944942398
+  },
+  "changes": {
+    "added": [
+      "IRM"
+    ],
+    "dropped": [
+      "NEM",
+      "TIGO"
+    ],
+    "turnover": 0.17794647138260505
+  },
+  "metrics": {
+    "expected_return": 0.12816052701839392,
+    "risk_score": 0.30059475621246023,
+    "risk_adjusted_return": 0.4249428227064746
+  },
+  "commentary": "**Rebalanceo Semanal**\n\n**1. Macro**: La desaceleraci\u00f3n econ\u00f3mica contin\u00faa, con el SPY y QQQ en declive. La Fed mantiene los tipos de inter\u00e9s altos (TNX: 4.45%), lo que sugiere una fase de recesi\u00f3n temida.\n\n**2. Compras/Ventas**: Se han realizado cambios en el portfolio, agregando IRM y eliminando NEM y TIGO. El turnover es del 17.8%, lo que indica un ajuste significativo en la composici\u00f3n del portfolio.\n\n**3. Mantenidas**: Las posiciones en GOOGL, ZM, TPL, ADI, RPRX, APH, AVGO e INCY se mantienen, aunque con ajustes en la ponderaci\u00f3n.\n\n**4. Performance vs SPY**: El portfolio ha registrado una p\u00e9rdida del -3.58% en comparaci\u00f3n con el SPY, que ha subido un 2.13%. El alpha es de -5.71%, lo que indica un desempe\u00f1o inferior al del mercado.\n\n**5. Vigilar**: Es importante seguir de cerca la evoluci\u00f3n del mercado y ajustar el portfolio seg\u00fan sea necesario para minimizar las p\u00e9rdidas y maximizar las ganancias.\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital."
+}

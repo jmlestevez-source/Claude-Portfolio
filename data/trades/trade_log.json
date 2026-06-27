@@ -7,7 +7,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000000067644,
     "ev_12m": 138.281,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -367,7 +367,7 @@
     "weight_before": 0,
     "weight_after": 0.05794947280774262,
     "ev_12m": 114.1525,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -447,6 +447,58 @@
     "exit_price": 129.98,
     "pnl_pct": -0.04,
     "pnl_days": 41,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-27",
+    "ticker": "IRM",
+    "action": "OPEN",
+    "price_at_trade": 132.44,
+    "weight_before": 0,
+    "weight_after": 0.10708161490136406,
+    "ev_12m": 151.75,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-27",
+    "ticker": "APH",
+    "action": "ADD",
+    "price_at_trade": 163.72,
+    "weight_before": 0.08442000746482907,
+    "weight_after": 0.12493705328138108,
+    "ev_12m": 187.43,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-06-27",
+    "ticker": "NEM",
+    "action": "CLOSE",
+    "price_at_trade": 96.13,
+    "weight_before": 0.12000000000006866,
+    "weight_after": 0,
+    "entry_price": 108.76,
+    "entry_date": "2026-05-04",
+    "exit_price": 96.13,
+    "pnl_pct": -11.61,
+    "pnl_days": 54,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-06-27",
+    "ticker": "TIGO",
+    "action": "CLOSE",
+    "price_at_trade": 89.26,
+    "weight_before": 0.057946471382536426,
+    "weight_after": 0,
+    "entry_price": 93.77,
+    "entry_date": "2026-06-13",
+    "exit_price": 89.26,
+    "pnl_pct": -4.81,
+    "pnl_days": 14,
     "status": "CLOSED"
   }
 ]
