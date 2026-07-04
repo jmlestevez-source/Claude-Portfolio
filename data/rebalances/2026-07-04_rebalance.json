@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-07-04T10:10:17.348932",
+  "portfolio": {
+    "IRM": 0.12000000347469847,
+    "UAL": 0.1200000034746979,
+    "MAS": 0.04214451855582287,
+    "RPRX": 0.12000000347469779,
+    "ADI": 0.12000000347469782,
+    "AVGO": 0.06626128277526154,
+    "GOOGL": 0.12000000347469798,
+    "APH": 0.12000000347469765,
+    "TPL": 0.12000000347469804,
+    "INCY": 0.05159417434602989
+  },
+  "changes": {
+    "added": [
+      "UAL",
+      "MAS"
+    ],
+    "dropped": [
+      "ZM"
+    ],
+    "turnover": 0.17506292608724858
+  },
+  "metrics": {
+    "expected_return": 0.1939527668953369,
+    "risk_score": 0.30351537947966944,
+    "risk_adjusted_return": 0.6369227302303984
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes en mi portfolio para mantener la exposici\u00f3n \u00f3ptima a diferentes sectores y minimizar el riesgo. Los cambios incluyen:\n\n* **Compras:** UAL y MAS, con el objetivo de aprovechar la tendencia alcista en el sector de transporte a\u00e9reo y materiales de construcci\u00f3n.\n* **Ventas:** ZM, debido a la disminuci\u00f3n en la demanda de soluciones de videoconferencia y la competencia creciente en el sector.\n\n**Estructura del Portfolio:**\n\n1. **Macro:** La tendencia alcista en SPY y QQQ, combinada con una disminuci\u00f3n en la volatilidad (VIX), sugiere un entorno favorable para la inversi\u00f3n.\n2. **Compras/Ventas:** Los cambios realizados buscan aprovechar oportunidades de crecimiento en sectores espec\u00edficos.\n3. **Mantenidas:** Las posiciones en IRM, TPL, GOOGL, ADI, RPRX, APH y AVGO se mantienen debido a su s\u00f3lida fundamentaci\u00f3n y potencial de crecimiento.\n4. **Performance vs SPY:** El portfolio ha registrado una p\u00e9rdida de -1.51% en comparaci\u00f3n con el SPY, que ha subido un 3.92%. El alpha es de -5.43%.\n5. **Vigilar:** Estar\u00e9 atento a los cambios en el entorno macro y las tendencias sectoriales para realizar ajustes adicionales si es necesario.\n\n**Conclusi\u00f3n:** No es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital. El objetivo es mantener una exposici\u00f3n diversificada y aprovechar oportunidades de crecimiento en diferentes sectores."
+}

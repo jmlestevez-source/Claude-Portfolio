@@ -31,7 +31,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000000063128,
     "ev_12m": 132.89249999999998,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -499,6 +499,68 @@
     "exit_price": 89.26,
     "pnl_pct": -4.81,
     "pnl_days": 14,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-04",
+    "ticker": "IRM",
+    "action": "ADD",
+    "price_at_trade": 117.16,
+    "weight_before": 0.10708161490136406,
+    "weight_after": 0.12000000347469847,
+    "ev_12m": 145.25,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-04",
+    "ticker": "UAL",
+    "action": "OPEN",
+    "price_at_trade": 133.32,
+    "weight_before": 0,
+    "weight_after": 0.1200000034746979,
+    "ev_12m": 162.25900000000001,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-04",
+    "ticker": "MAS",
+    "action": "OPEN",
+    "price_at_trade": 82.77,
+    "weight_before": 0,
+    "weight_after": 0.04214451855582287,
+    "ev_12m": 99.25,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-04",
+    "ticker": "INCY",
+    "action": "TRIM",
+    "price_at_trade": 116.86,
+    "weight_before": 0.07703478944942398,
+    "weight_after": 0.05159417434602989,
+    "ev_12m": 133.25,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-04",
+    "ticker": "ZM",
+    "action": "CLOSE",
+    "price_at_trade": 87.145,
+    "weight_before": 0.1249370550453102,
+    "weight_after": 0,
+    "entry_price": 107.12,
+    "entry_date": "2026-05-04",
+    "exit_price": 87.145,
+    "pnl_pct": -18.65,
+    "pnl_days": 61,
     "status": "CLOSED"
   }
 ]
