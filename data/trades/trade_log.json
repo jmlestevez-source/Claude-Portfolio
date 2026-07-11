@@ -19,7 +19,7 @@
     "weight_before": 0,
     "weight_after": 0.11999999999989512,
     "ev_12m": 482.52750000000003,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -191,7 +191,7 @@
     "weight_before": 0,
     "weight_after": 0.06000000447868619,
     "ev_12m": 469.15900000000005,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -203,7 +203,7 @@
     "weight_before": 0.11999999999999773,
     "weight_after": 0.06000001157518746,
     "ev_12m": 440.998,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -279,7 +279,7 @@
     "weight_before": 0.059999995420924324,
     "weight_after": 0.12368741352825229,
     "ev_12m": 468.0615,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -291,7 +291,7 @@
     "weight_before": 0.060000006902152965,
     "weight_after": 0.12047702212021387,
     "ev_12m": 434.439,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -533,7 +533,7 @@
     "weight_before": 0,
     "weight_after": 0.04214451855582287,
     "ev_12m": 99.25,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -561,6 +561,96 @@
     "exit_price": 87.145,
     "pnl_pct": -18.65,
     "pnl_days": 61,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "TIGO",
+    "action": "OPEN",
+    "price_at_trade": 96.85,
+    "weight_before": 0,
+    "weight_after": 0.12090511085596493,
+    "ev_12m": 117.44300000000003,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "VVV",
+    "action": "OPEN",
+    "price_at_trade": 38.64,
+    "weight_before": 0,
+    "weight_after": 0.08181903266915172,
+    "ev_12m": 46.692499999999995,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "CPAY",
+    "action": "OPEN",
+    "price_at_trade": 351.16,
+    "weight_before": 0,
+    "weight_after": 0.04358410702683819,
+    "ev_12m": 421.96399999999994,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "COLB",
+    "action": "OPEN",
+    "price_at_trade": 31.82,
+    "weight_before": 0,
+    "weight_after": 0.03042180160464148,
+    "ev_12m": 37.984,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "MAS",
+    "action": "CLOSE",
+    "price_at_trade": 77.84,
+    "weight_before": 0.04214451855582287,
+    "weight_after": 0,
+    "entry_price": 82.77,
+    "entry_date": "2026-07-04",
+    "exit_price": 77.84,
+    "pnl_pct": -5.96,
+    "pnl_days": 7,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "GOOGL",
+    "action": "CLOSE",
+    "price_at_trade": 353.355,
+    "weight_before": 0.12000000347469798,
+    "weight_after": 0,
+    "entry_price": 376.0202258366575,
+    "entry_date": "2026-05-04",
+    "exit_price": 353.355,
+    "pnl_pct": -6.03,
+    "pnl_days": 68,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-11",
+    "ticker": "TPL",
+    "action": "CLOSE",
+    "price_at_trade": 392.745,
+    "weight_before": 0.12000000347469804,
+    "weight_after": 0,
+    "entry_price": 387.5488667194391,
+    "entry_date": "2026-05-16",
+    "exit_price": 392.745,
+    "pnl_pct": 1.34,
+    "pnl_days": 56,
     "status": "CLOSED"
   }
 ]

@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-07-11T09:24:55.829810",
+  "portfolio": {
+    "TIGO": 0.12090511085596493,
+    "VVV": 0.08181903266915172,
+    "CPAY": 0.04358410702683819,
+    "COLB": 0.03042180160464148,
+    "RPRX": 0.12090511086805592,
+    "IRM": 0.1209051108412883,
+    "AVGO": 0.06676106454174838,
+    "APH": 0.12090511085596545,
+    "ADI": 0.12090511084418228,
+    "UAL": 0.12090511085596546,
+    "INCY": 0.05198332903619791
+  },
+  "changes": {
+    "added": [
+      "TIGO",
+      "VVV",
+      "CPAY",
+      "COLB"
+    ],
+    "dropped": [
+      "MAS",
+      "GOOGL",
+      "TPL"
+    ],
+    "turnover": 0.28214452550521896
+  },
+  "metrics": {
+    "expected_return": 0.17508257572491528,
+    "risk_score": 0.3015674277079253,
+    "risk_adjusted_return": 0.5786563909117348
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes en mi portfolio para mantener la estrategia de inversi\u00f3n. Los cambios incluyen la adici\u00f3n de **TIGO**, **VVV**, **CPAY** y **COLB**, mientras que he eliminado **MAS**, **GOOGL** y **TPL**. El turnover ha sido del 28.2%, lo que indica un ajuste significativo en la composici\u00f3n del portfolio.\n\n**Estructura del Portfolio**\n\n1. **Macro**: La tendencia alcista moderada se mantiene, con la Fed manteniendo los tipos altos (TNX: 4.57%). Estamos en fase de expansi\u00f3n tard\u00eda.\n2. **Compras/ventas**: He comprado **TIGO**, **VVV**, **CPAY** y **COLB**, y vendido **MAS**, **GOOGL** y **TPL**.\n3. **Mantenidas**: Las posiciones en **RPRX**, **UAL**, **APH**, **ADI**, **IRM**, **AVGO** e **INCY** se mantienen sin cambios.\n4. **Performance vs SPY**: El portfolio ha perdido -1.54% en la semana, mientras que el SPY ha ganado +2.19%. El alpha es -3.73%.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el contexto macro y ajustar\u00e9 el portfolio seg\u00fan sea necesario.\n\n**Conclusi\u00f3n**\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital. El objetivo es mantener una estrategia de inversi\u00f3n disciplinada y ajustar el portfolio seg\u00fan las condiciones del mercado."
+}
