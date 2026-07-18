@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-07-18T09:26:18.894278",
+  "portfolio": {
+    "TPL": 0.12000000021371343,
+    "CART": 0.059094905763813696,
+    "VVV": 0.0818190296655733,
+    "AVGO": 0.066761064437998,
+    "TIGO": 0.12000000018979907,
+    "RPRX": 0.12000000021525711,
+    "APH": 0.12000000021114439,
+    "IRM": 0.12000000019656556,
+    "COLB": 0.030421800846699945,
+    "CPAY": 0.04358409534668727,
+    "UAL": 0.11831910291274812
+  },
+  "changes": {
+    "added": [
+      "TPL",
+      "CART"
+    ],
+    "dropped": [
+      "ADI",
+      "INCY"
+    ],
+    "turnover": 0.17909490597752714
+  },
+  "metrics": {
+    "expected_return": 0.10589962836414607,
+    "risk_score": 0.3103327598022461,
+    "risk_adjusted_return": 0.3401493258576833
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn este rebalanceo semanal, he realizado ajustes en mi portfolio para mantener la estrategia de inversi\u00f3n. Los cambios incluyen la adici\u00f3n de **TPL** y **CART**, mientras que he eliminado **ADI** e **INCY**. El turnover ha sido del 17.9%, lo que indica un ajuste significativo en la composici\u00f3n del portfolio.\n\n**Estructura del Portfolio**\n\n1. **Macro**: La desaceleraci\u00f3n econ\u00f3mica y la mantenci\u00f3n de tipos altos por la Fed sugieren una fase de recesi\u00f3n temida. El VIX ha subido, lo que indica una mayor volatilidad en el mercado.\n2. **Compras/Ventas**: He comprado **TPL** y **CART**, aprovechando oportunidades de crecimiento en el sector.\n3. **Mantenidas**: He mantenido las posiciones en **RPRX**, **APH**, **IRM**, **TIGO**, **UAL**, **VVV**, **AVGO**, **CPAY** y **COLB**, ya que siguen alineadas con mi estrategia de inversi\u00f3n.\n4. **Performance vs SPY**: El portfolio ha registrado una p\u00e9rdida del -1.98%, ligeramente peor que el SPY (-1.87%). El alpha ha sido de -0.11%, lo que indica una ligera subperformance.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el entorno macro y ajustar\u00e9 el portfolio seg\u00fan sea necesario.\n\n**Conclusi\u00f3n**\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital. El objetivo es mantener una estrategia de inversi\u00f3n disciplinada y ajustar el portfolio seg\u00fan las condiciones del mercado."
+}

@@ -127,7 +127,7 @@
     "weight_before": 0,
     "weight_after": 0.05999999999918003,
     "ev_12m": 534.0,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -303,7 +303,7 @@
     "weight_before": 0,
     "weight_after": 0.06849290138266158,
     "ev_12m": 119.75,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -419,7 +419,7 @@
     "weight_before": 0.06699521201944196,
     "weight_after": 0.12000000000006865,
     "ev_12m": 557.7585,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -545,7 +545,7 @@
     "weight_before": 0.07703478944942398,
     "weight_after": 0.05159417434602989,
     "ev_12m": 133.25,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -651,6 +651,58 @@
     "exit_price": 392.745,
     "pnl_pct": 1.34,
     "pnl_days": 56,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-18",
+    "ticker": "TPL",
+    "action": "OPEN",
+    "price_at_trade": 415.7,
+    "weight_before": 0,
+    "weight_after": 0.12000000021371343,
+    "ev_12m": 489.09150000000005,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-18",
+    "ticker": "CART",
+    "action": "OPEN",
+    "price_at_trade": 45.82,
+    "weight_before": 0,
+    "weight_after": 0.059094905763813696,
+    "ev_12m": 53.8,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-18",
+    "ticker": "ADI",
+    "action": "CLOSE",
+    "price_at_trade": 375.36,
+    "weight_before": 0.12090511084418228,
+    "weight_after": 0,
+    "entry_price": 424.44421580309915,
+    "entry_date": "2026-05-10",
+    "exit_price": 375.36,
+    "pnl_pct": -11.56,
+    "pnl_days": 69,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-18",
+    "ticker": "INCY",
+    "action": "CLOSE",
+    "price_at_trade": 117.25,
+    "weight_before": 0.05198332903619791,
+    "weight_after": 0,
+    "entry_price": 102.38,
+    "entry_date": "2026-06-06",
+    "exit_price": 117.25,
+    "pnl_pct": 14.52,
+    "pnl_days": 42,
     "status": "CLOSED"
   }
 ]
