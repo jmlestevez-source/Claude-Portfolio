@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-07-25T09:36:34.970976",
+  "portfolio": {
+    "IRM": 0.12010132057641956,
+    "ABBV": 0.12010132057641956,
+    "CPAY": 0.12010132057641654,
+    "TIGO": 0.12010132057641956,
+    "WEX": 0.07317559521714506,
+    "AVGO": 0.0668659032284471,
+    "RPRX": 0.12010132057641956,
+    "CART": 0.05914480005127837,
+    "VVV": 0.08188810742966231,
+    "UAL": 0.11841899119137238
+  },
+  "changes": {
+    "added": [
+      "ABBV",
+      "WEX"
+    ],
+    "dropped": [
+      "TPL",
+      "APH",
+      "COLB"
+    ],
+    "turnover": 0.2704218012715578
+  },
+  "metrics": {
+    "expected_return": 0.1766012596103783,
+    "risk_score": 0.3065913309018573,
+    "risk_adjusted_return": 0.5741425127053603
+  },
+  "commentary": "Rebalanceo semanal: \n\n**Macro**: La tendencia alcista en los tipos de inter\u00e9s (TNX: +3.6% 5d) y la fase de expansi\u00f3n del ciclo econ\u00f3mico sugieren un entorno favorable para las acciones. El VIX (18.70) indica una volatilidad moderada.\n\n**Compras/ventas**: Se han agregado ABBV y WEX al portfolio, mientras que se han eliminado TPL, APH y COLB. Esto refleja una estrategia de diversificaci\u00f3n y ajuste a las condiciones de mercado.\n\n**Mantenidas**: Las posiciones en IRM, TIGO, RPRX, CPAY, UAL, VVV, AVGO y CART se mantienen, lo que indica confianza en su potencial a largo plazo.\n\n**Performance vs SPY**: El portfolio ha ca\u00eddo un 1.80% en la semana, pero no se dispone de datos para comparar con el SPY.\n\n**Vigilar**: Es importante monitorear la evoluci\u00f3n de los tipos de inter\u00e9s y la volatilidad del mercado para ajustar la estrategia seg\u00fan sea necesario.\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital."
+}

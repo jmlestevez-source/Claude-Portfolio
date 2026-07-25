@@ -355,7 +355,7 @@
     "weight_before": 0,
     "weight_after": 0.12348814371993418,
     "ev_12m": 188.455,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -431,7 +431,7 @@
     "weight_before": 0.12348814371993418,
     "weight_after": 0.08442000746482907,
     "ev_12m": 186.416,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -469,7 +469,7 @@
     "weight_before": 0.08442000746482907,
     "weight_after": 0.12493705328138108,
     "ev_12m": 187.43,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -607,7 +607,7 @@
     "weight_before": 0,
     "weight_after": 0.03042180160464148,
     "ev_12m": 37.984,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -661,7 +661,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000021371343,
     "ev_12m": 489.09150000000005,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -703,6 +703,84 @@
     "exit_price": 117.25,
     "pnl_pct": 14.52,
     "pnl_days": 42,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "ABBV",
+    "action": "OPEN",
+    "price_at_trade": 259.36,
+    "weight_before": 0,
+    "weight_after": 0.12010132057641956,
+    "ev_12m": 307.433,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "CPAY",
+    "action": "ADD",
+    "price_at_trade": 370.58,
+    "weight_before": 0.04358409534668727,
+    "weight_after": 0.12010132057641654,
+    "ev_12m": 438.5,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "WEX",
+    "action": "OPEN",
+    "price_at_trade": 176.15,
+    "weight_before": 0,
+    "weight_after": 0.07317559521714506,
+    "ev_12m": 207.75,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "TPL",
+    "action": "CLOSE",
+    "price_at_trade": 419.44,
+    "weight_before": 0.12000000021371343,
+    "weight_after": 0,
+    "entry_price": 415.7,
+    "entry_date": "2026-07-18",
+    "exit_price": 419.44,
+    "pnl_pct": 0.9,
+    "pnl_days": 7,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "APH",
+    "action": "CLOSE",
+    "price_at_trade": 152.67,
+    "weight_before": 0.12000000021114439,
+    "weight_after": 0,
+    "entry_price": 157.01705277933024,
+    "entry_date": "2026-06-13",
+    "exit_price": 152.67,
+    "pnl_pct": -2.77,
+    "pnl_days": 42,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-07-25",
+    "ticker": "COLB",
+    "action": "CLOSE",
+    "price_at_trade": 31.15,
+    "weight_before": 0.030421800846699945,
+    "weight_after": 0,
+    "entry_price": 31.82,
+    "entry_date": "2026-07-11",
+    "exit_price": 31.15,
+    "pnl_pct": -2.11,
+    "pnl_days": 14,
     "status": "CLOSED"
   }
 ]
