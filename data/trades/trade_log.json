@@ -583,7 +583,7 @@
     "weight_before": 0,
     "weight_after": 0.08181903266915172,
     "ev_12m": 46.692499999999995,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -713,7 +713,7 @@
     "weight_before": 0,
     "weight_after": 0.12010132057641956,
     "ev_12m": 307.433,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -737,7 +737,7 @@
     "weight_before": 0,
     "weight_after": 0.07317559521714506,
     "ev_12m": 207.75,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -781,6 +781,96 @@
     "exit_price": 31.15,
     "pnl_pct": -2.11,
     "pnl_days": 14,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "MU",
+    "action": "OPEN",
+    "price_at_trade": 823.03,
+    "weight_before": 0,
+    "weight_after": 0.12109078717550449,
+    "ev_12m": 1028.75,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "GEN",
+    "action": "OPEN",
+    "price_at_trade": 27.45,
+    "weight_before": 0,
+    "weight_after": 0.03232157099868505,
+    "ev_12m": 33.6875,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "AVGO",
+    "action": "ADD",
+    "price_at_trade": 389.28,
+    "weight_before": 0.0668659032284471,
+    "weight_after": 0.1211912834148694,
+    "ev_12m": 461.96,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "CART",
+    "action": "ADD",
+    "price_at_trade": 44.6,
+    "weight_before": 0.05914480005127837,
+    "weight_after": 0.12097303269253772,
+    "ev_12m": 52.50999999999999,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "ABBV",
+    "action": "CLOSE",
+    "price_at_trade": 250.94,
+    "weight_before": 0.12010132057641956,
+    "weight_after": 0,
+    "entry_price": 259.36,
+    "entry_date": "2026-07-25",
+    "exit_price": 250.94,
+    "pnl_pct": -3.25,
+    "pnl_days": 7,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "WEX",
+    "action": "CLOSE",
+    "price_at_trade": 186.96,
+    "weight_before": 0.07317559521714506,
+    "weight_after": 0,
+    "entry_price": 176.15,
+    "entry_date": "2026-07-25",
+    "exit_price": 186.96,
+    "pnl_pct": 6.14,
+    "pnl_days": 7,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-08-01",
+    "ticker": "VVV",
+    "action": "CLOSE",
+    "price_at_trade": 38.41,
+    "weight_before": 0.08188810742966231,
+    "weight_after": 0,
+    "entry_price": 38.64,
+    "entry_date": "2026-07-11",
+    "exit_price": 38.41,
+    "pnl_pct": -0.6,
+    "pnl_days": 21,
     "status": "CLOSED"
   }
 ]

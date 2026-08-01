@@ -1,72 +1,65 @@
 {
-  "IRM": {
-    "weight": 0.12010132057641956,
-    "entry_date": "2026-06-27",
-    "entry_price": 132.44,
-    "ev_12m": 152.0,
-    "kill_condition": "Margen operativo cae por debajo del 15% en dos trimestres consecutivos"
-  },
-  "ABBV": {
-    "weight": 0.12010132057641956,
-    "entry_date": "2026-07-25",
-    "entry_price": 259.36,
-    "ev_12m": 307.433,
-    "kill_condition": "Margen operativo cae por debajo del 18% en dos trimestres consecutivos"
-  },
-  "CPAY": {
-    "weight": 0.12010132057641654,
-    "entry_date": "2026-07-11",
-    "entry_price": 363.53259096594087,
-    "ev_12m": 438.5,
-    "kill_condition": "Margen operativo cae por debajo del 15% en dos trimestres consecutivos"
-  },
-  "TIGO": {
-    "weight": 0.12010132057641956,
-    "entry_date": "2026-07-11",
-    "entry_price": 96.85,
-    "ev_12m": 111.50999999999999,
+  "MU": {
+    "weight": 0.12109078717550449,
+    "entry_date": "2026-08-01",
+    "entry_price": 823.03,
+    "ev_12m": 1028.75,
     "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
   },
-  "WEX": {
-    "weight": 0.07317559521714506,
-    "entry_date": "2026-07-25",
-    "entry_price": 176.15,
-    "ev_12m": 207.75,
-    "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
-  },
-  "AVGO": {
-    "weight": 0.0668659032284471,
-    "entry_date": "2026-05-30",
-    "entry_price": 446.77,
-    "ev_12m": 449.25,
+  "GEN": {
+    "weight": 0.03232157099868505,
+    "entry_date": "2026-08-01",
+    "entry_price": 27.45,
+    "ev_12m": 33.6875,
     "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
   },
   "RPRX": {
-    "weight": 0.12010132057641956,
+    "weight": 0.12120400488366699,
     "entry_date": "2026-06-20",
     "entry_price": 52.96,
-    "ev_12m": 70.8215,
+    "ev_12m": 69.85,
     "kill_condition": "Margen operativo cae por debajo del 10% en dos trimestres consecutivos"
   },
-  "CART": {
-    "weight": 0.05914480005127837,
-    "entry_date": "2026-07-18",
-    "entry_price": 45.82,
-    "ev_12m": 49.760000000000005,
+  "TIGO": {
+    "weight": 0.12120400488367128,
+    "entry_date": "2026-07-11",
+    "entry_price": 96.85,
+    "ev_12m": 114.03800000000001,
     "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
   },
-  "VVV": {
-    "weight": 0.08188810742966231,
+  "AVGO": {
+    "weight": 0.1211912834148694,
+    "entry_date": "2026-05-30",
+    "entry_price": 420.9994493554787,
+    "ev_12m": 461.96,
+    "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
+  },
+  "CPAY": {
+    "weight": 0.12120400490066068,
     "entry_date": "2026-07-11",
-    "entry_price": 38.64,
-    "ev_12m": 45.142999999999994,
-    "kill_condition": "Margen operativo cae por debajo del 30% en dos trimestres consecutivos"
+    "entry_price": 363.53259096594087,
+    "ev_12m": 452.5455,
+    "kill_condition": "Margen operativo cae por debajo del 70% en dos trimestres consecutivos"
+  },
+  "IRM": {
+    "weight": 0.12120400490078348,
+    "entry_date": "2026-06-27",
+    "entry_price": 132.44,
+    "ev_12m": 144.062,
+    "kill_condition": "Margen operativo cae por debajo del 40% en dos trimestres consecutivos"
+  },
+  "CART": {
+    "weight": 0.12097303269253772,
+    "entry_date": "2026-07-18",
+    "entry_price": 45.19646893573339,
+    "ev_12m": 52.50999999999999,
+    "kill_condition": "Margen operativo cae por debajo del 20% en dos trimestres consecutivos"
   },
   "UAL": {
-    "weight": 0.11841899119137238,
+    "weight": 0.11960730614962103,
     "entry_date": "2026-07-04",
     "entry_price": 133.32,
-    "ev_12m": 133.875,
-    "kill_condition": "Margen operativo cae por debajo del 25% en dos trimestres consecutivos"
+    "ev_12m": 139.75,
+    "kill_condition": "Margen operativo cae por debajo del 15% en dos trimestres consecutivos"
   }
 }

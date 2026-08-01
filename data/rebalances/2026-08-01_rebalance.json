@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-08-01T09:58:34.896320",
+  "portfolio": {
+    "MU": 0.12109078717550449,
+    "GEN": 0.03232157099868505,
+    "RPRX": 0.12120400488366699,
+    "TIGO": 0.12120400488367128,
+    "AVGO": 0.1211912834148694,
+    "CPAY": 0.12120400490066068,
+    "IRM": 0.12120400490078348,
+    "CART": 0.12097303269253772,
+    "UAL": 0.11960730614962103
+  },
+  "changes": {
+    "added": [
+      "MU",
+      "GEN"
+    ],
+    "dropped": [
+      "ABBV",
+      "WEX",
+      "VVV"
+    ],
+    "turnover": 0.27516502322322706
+  },
+  "metrics": {
+    "expected_return": 0.19098447486637748,
+    "risk_score": 0.30206673914499466,
+    "risk_adjusted_return": 0.6301729955757559
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes en mi portfolio para mantener la estrategia de inversi\u00f3n. He agregado `MU` y `GEN` al portfolio, mientras que he eliminado `ABBV`, `WEX` y `VVV`. El turnover ha sido del 27,5%, lo que indica un cambio significativo en la composici\u00f3n del portfolio.\n\n**Estructura del Portfolio**\n\n1. **Macro**: La tendencia alcista en SPY y QQQ, combinada con el aumento en los tipos de inter\u00e9s (TNX +2,2% 5d), sugiere que la fase del ciclo econ\u00f3mico es expansiva. El VIX en baja tambi\u00e9n apoya esta visi\u00f3n.\n2. **Compras/ventas**: He comprado `MU` y `GEN` debido a su potencial de crecimiento y valoraci\u00f3n atractiva.\n3. **Mantenidas**: Las acciones `IRM`, `CPAY`, `TIGO`, `RPRX`, `AVGO`, `CART` y `UAL` siguen siendo parte del portfolio debido a su desempe\u00f1o estable y perspectivas positivas.\n4. **Performance vs SPY**: El portfolio ha registrado una p\u00e9rdida del -1,37%, ligeramente mejor que el SPY (-1,45%). El alpha positivo (+0,08%) indica que la estrategia de inversi\u00f3n est\u00e1 funcionando.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el entorno macro y ajustar\u00e9 el portfolio seg\u00fan sea necesario.\n\n**Conclusi\u00f3n**\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital. El objetivo es mantener una estrategia de inversi\u00f3n disciplinada y adaptarme a los cambios en el mercado."
+}
