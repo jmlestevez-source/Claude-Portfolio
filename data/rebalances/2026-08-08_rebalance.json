@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-08-08T08:36:41.158465",
+  "portfolio": {
+    "APA": 0.07786092798676181,
+    "INCY": 0.06971293242315064,
+    "FAF": 0.042473207807241065,
+    "GEN": 0.07763983892818556,
+    "CART": 0.12211804994408937,
+    "IRM": 0.12211804999487264,
+    "TIGO": 0.12211804999194713,
+    "UAL": 0.12172284294568578,
+    "MU": 0.12211804999401442,
+    "AVGO": 0.12211804998405158
+  },
+  "changes": {
+    "added": [
+      "APA",
+      "INCY",
+      "FAF"
+    ],
+    "dropped": [
+      "RPRX",
+      "CPAY"
+    ],
+    "turnover": 0.24240800978432753
+  },
+  "metrics": {
+    "expected_return": 0.23422892926224304,
+    "risk_score": 0.30150884841811254,
+    "risk_adjusted_return": 0.7742878612876261
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn el contexto macro actual, con una tendencia alcista en el SPY y QQQ, y una disminuci\u00f3n del VIX, he decidido realizar ajustes en mi portfolio.\n\n**Compras/Ventas**: He agregado posiciones en APA, INCY y FAF, mientras que he eliminado RPRX y CPAY. Esto ha generado un turnover del 24.2%.\n\n**Mantenidas**: Las posiciones en IRM, MU, TIGO, AVGO, CART y UAL se mantienen sin cambios, mientras que GEN se mantiene con una ponderaci\u00f3n del 7.8%.\n\n**Performance vs SPY**: El portfolio ha subido un 1.19% esta semana, lo que es inferior al aumento del 2.07% del SPY. El alpha es -0.88%.\n\n**Vigilar**: La Fed mantiene los tipos altos, lo que puede afectar la econom\u00eda en el corto plazo. Debo vigilar de cerca la evoluci\u00f3n del mercado y ajustar mi estrategia seg\u00fan sea necesario.\n\nNo es consejo de inversi\u00f3n, es como estoy gestionando mi propio capital."
+}

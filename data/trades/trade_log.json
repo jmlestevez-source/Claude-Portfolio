@@ -407,7 +407,7 @@
     "weight_before": 0,
     "weight_after": 0.12000000000006855,
     "ev_12m": 68.16749999999999,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -595,7 +595,7 @@
     "weight_before": 0,
     "weight_after": 0.04358410702683819,
     "ev_12m": 421.96399999999994,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -725,7 +725,7 @@
     "weight_before": 0.04358409534668727,
     "weight_after": 0.12010132057641654,
     "ev_12m": 438.5,
-    "status": "OPEN",
+    "status": "CLOSED",
     "pnl_pct": null,
     "pnl_days": null
   },
@@ -871,6 +871,82 @@
     "exit_price": 38.41,
     "pnl_pct": -0.6,
     "pnl_days": 21,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "APA",
+    "action": "OPEN",
+    "price_at_trade": 37.63,
+    "weight_before": 0,
+    "weight_after": 0.07786092798676181,
+    "ev_12m": 49.121500000000005,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "INCY",
+    "action": "OPEN",
+    "price_at_trade": 120.56,
+    "weight_before": 0,
+    "weight_after": 0.06971293242315064,
+    "ev_12m": 156.75,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "FAF",
+    "action": "OPEN",
+    "price_at_trade": 74.22,
+    "weight_before": 0,
+    "weight_after": 0.042473207807241065,
+    "ev_12m": 96.5125,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "GEN",
+    "action": "ADD",
+    "price_at_trade": 29.17,
+    "weight_before": 0.03232157099868505,
+    "weight_after": 0.07763983892818556,
+    "ev_12m": 37.61500000000001,
+    "status": "OPEN",
+    "pnl_pct": null,
+    "pnl_days": null
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "RPRX",
+    "action": "CLOSE",
+    "price_at_trade": 56.77,
+    "weight_before": 0.12120400488366699,
+    "weight_after": 0,
+    "entry_price": 52.96,
+    "entry_date": "2026-06-20",
+    "exit_price": 56.77,
+    "pnl_pct": 7.19,
+    "pnl_days": 49,
+    "status": "CLOSED"
+  },
+  {
+    "date": "2026-08-08",
+    "ticker": "CPAY",
+    "action": "CLOSE",
+    "price_at_trade": 392.94,
+    "weight_before": 0.12120400490066068,
+    "weight_after": 0,
+    "entry_price": 363.53259096594087,
+    "entry_date": "2026-07-11",
+    "exit_price": 392.94,
+    "pnl_pct": 8.09,
+    "pnl_days": 28,
     "status": "CLOSED"
   }
 ]
