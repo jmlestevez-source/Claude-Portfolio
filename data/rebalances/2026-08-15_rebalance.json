@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-08-15T08:16:25.675632",
+  "portfolio": {
+    "EOG": 0.12000000000226488,
+    "NVDA": 0.12000000000271309,
+    "MPC": 0.1200000000022389,
+    "AMGN": 0.12000000000248545,
+    "AMZN": 0.120000000002495,
+    "MSFT": 0.12000000000251335,
+    "ADI": 0.03999999997986252,
+    "AVGO": 0.12000000000271335,
+    "MU": 0.12000000000271337
+  },
+  "changes": {
+    "added": [
+      "EOG",
+      "NVDA",
+      "MPC",
+      "AMGN",
+      "AMZN",
+      "MSFT",
+      "ADI"
+    ],
+    "dropped": [
+      "APA",
+      "INCY",
+      "FAF",
+      "GEN",
+      "CART",
+      "IRM",
+      "TIGO",
+      "UAL"
+    ],
+    "turnover": 0.7599999999945731
+  },
+  "metrics": {
+    "expected_return": 0.18260133699074244,
+    "risk_score": 0.2997507115470694,
+    "risk_adjusted_return": 0.6071518037361789
+  },
+  "commentary": "**Rebalanceo Semanal**\n\nEn esta semana, he realizado ajustes significativos en mi portfolio para aprovechar las tendencias actuales del mercado. He aumentado la exposici\u00f3n a **EOG**, **NVDA**, **MPC**, **AMGN**, **AMZN**, **MSFT** y **ADI**, mientras que he eliminado **APA**, **INCY**, **FAF**, **GEN**, **CART**, **IRM**, **TIGO** y **UAL**.\n\nEl **turnover** ha sido del 76.0%, lo que indica un cambio significativo en la composici\u00f3n del portfolio. La **valoraci\u00f3n** de las empresas en mi portfolio se mantiene en un nivel razonable, con un **EV 12M** de 18.3%.\n\nEn t\u00e9rminos de **performance**, mi portfolio ha subido un 1.37% esta semana, lo que es inferior al aumento del 2.44% del **SPY**. El **alpha** es de -1.07%, lo que indica que mi estrategia no ha superado al mercado en este per\u00edodo.\n\n**Estructura**:\n\n1. **Macro**: La tendencia alcista moderada se mantiene, con la Fed manteniendo los tipos estables y el VIX en un nivel razonable.\n2. **Compras/ventas**: He aumentado la exposici\u00f3n a sectores con potencial de crecimiento.\n3. **Mantenidas**: Las empresas que he mantenido en mi portfolio tienen fundamentos s\u00f3lidos y un potencial de crecimiento a largo plazo.\n4. **Performance vs SPY**: Mi portfolio no ha superado al SPY en este per\u00edodo, pero estoy confiado en mi estrategia a largo plazo.\n5. **Vigilar**: Estar\u00e9 atento a los cambios en el contexto macro y ajustar\u00e9 mi estrategia seg\u00fan sea necesario"
+}
